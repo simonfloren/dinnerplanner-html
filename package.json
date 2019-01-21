@@ -1,0 +1,22 @@
+{
+  "name": "dinnerplanner-html",
+  "version": "1.0.0",
+  "description": "Interaction Programing - Lab assignment - HTML =================================================",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonfloren/dinnerplanner-html.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simonfloren/dinnerplanner-html/issues"
+  },
+  "homepage": "https://github.com/simonfloren/dinnerplanner-html#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

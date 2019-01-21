@@ -20,6 +20,11 @@ div#welcome {
   justify-content: center;
 }
 
+.testdiv {
+  max-width: 200px;
+  max-height: auto;
+}
+
 #sidebar {
   background: lightblue;
 }
@@ -39,8 +44,4 @@ div#welcome {
 
 .inputRow {
   width: 35px;
-}
-
-.confButton {
-  clear: both;
 }
