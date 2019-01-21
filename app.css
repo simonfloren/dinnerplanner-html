@@ -1,24 +1,16 @@
-html,body,.container
-{
+html, body, .container {
     height:100%;
 }
 
-header
-{
+.sidebar__header {
     background: pink;
     height: 50px;
 }
 
-.row
-{
-    height: 100%;
+.sidebar__body {
+
 }
-.col-md-3 {   
-    background: lightgrey;
-}
-.col-md-9 {
-    background: lightblue;
-}
+
 div#welcome {
   flex-direction: column;
   justify-content: center;
