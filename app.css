@@ -31,9 +31,6 @@ div#welcome {
 
 #dishDetails {
   background: lightgray;
-}
-
-.row {
   height: 100%;
 }
 
@@ -42,6 +39,16 @@ div#welcome {
   height: 38px;
 }
 
-.inputRow {
-  width: 35px;
+.panel {
+  background: lightsalmon;
+  width: 50%;
+}
+
+#sameRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dish-img {
+  width: 350px;
 }
