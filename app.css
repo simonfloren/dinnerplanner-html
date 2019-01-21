@@ -2,35 +2,20 @@ html,body,.container
 {
     height:100%;
 }
-.container
-{
-    display:table;
-    width: 100%;
-    margin-top: -50px;
-    padding: 50px 0 0 0; /*set left/right padding according to needs*/
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
+
 header
 {
-    background: green;
+    background: pink;
     height: 50px;
 }
 
 .row
 {
     height: 100%;
-    display: table-row;
-}
-@media (min-width: 992px) {
-  .row .no-float {
-      display: table-cell;
-      float: none;
-  }
 }
 .col-md-3 {   
-    background: pink;
+    background: lightgrey;
 }
 .col-md-9 {
-    background: yellow;  	
+    background: lightblue;
 }
