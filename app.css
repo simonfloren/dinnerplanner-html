@@ -19,3 +19,12 @@ header
 .col-md-9 {
     background: lightblue;
 }
+div#welcome {
+  flex-direction: column;
+  justify-content: center;
+  background-color: pink;
+}
+
+#welcome div {
+  justify-content: center;
+}
