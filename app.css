@@ -2,6 +2,11 @@ html, body, .container {
     height:100%;
 }
 
+h4 {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
 .sidebar__header {
     background: pink;
     height: 50px;
@@ -44,4 +49,26 @@ div#welcome {
 
 .inputRow {
   width: 35px;
+}
+
+#dishSearch {
+  background-color: pink;
+  padding: 0px;
+}
+
+.dishSearch__header {
+  background-color: gray;
+}
+
+.dishSearch__body {
+  padding: 15px;
+}
+
+.select-dish-container {
+  margin: 0px;
+  height: 100%;
+}
+
+.dish-card {
+  padding: 5px;
 }
