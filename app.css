@@ -14,7 +14,6 @@ html, body, .container {
 div#welcome {
   flex-direction: column;
   justify-content: center;
-  background-color: pink;
 }
 
 #welcome div {
