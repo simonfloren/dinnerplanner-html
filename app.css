@@ -8,7 +8,7 @@ html, body, .container {
 }
 
 .sidebar__body {
-
+  background: lightcoral;
 }
 
 div#welcome {
@@ -18,4 +18,29 @@ div#welcome {
 
 #welcome div {
   justify-content: center;
+}
+
+#sidebar {
+  background: lightblue;
+}
+
+#dishDetails {
+  background: lightgray;
+}
+
+.row {
+  height: 100%;
+}
+
+.addButton, .remButton {
+  width: 30px;
+  height: 30px;
+}
+
+.inputRow {
+  width: 35px;
+}
+
+.confButton {
+  clear: both;
 }
