@@ -32,9 +32,9 @@ div#welcome {
   height: 100%;
 }
 
-.addButton, .remButton {
-  width: 30px;
-  height: 30px;
+.addBtn, .remBtn {
+  width: 38px;
+  height: 38px;
 }
 
 .inputRow {
