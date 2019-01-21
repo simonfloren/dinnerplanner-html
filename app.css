@@ -36,15 +36,22 @@ div#welcome {
 
 #dishDetails {
   background: lightgray;
-}
-
-.row {
   height: 100%;
 }
 
-.addButton, .remButton {
-  width: 30px;
-  height: 30px;
+.addBtn, .remBtn {
+  width: 38px;
+  height: 38px;
+}
+
+.panel {
+  background: lightsalmon;
+  width: 50%;
+}
+
+#sameRow {
+  display: flex;
+  justify-content: space-between;
 }
 
 .inputRow {
@@ -71,4 +78,8 @@ div#welcome {
 
 .dish-card {
   padding: 5px;
+}
+
+.dish-img {
+  width: 350px;
 }
