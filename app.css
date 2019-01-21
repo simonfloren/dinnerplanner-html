@@ -19,3 +19,8 @@ div#welcome {
 #welcome div {
   justify-content: center;
 }
+
+.testdiv {
+  max-width: 200px;
+  max-height: auto;
+}
