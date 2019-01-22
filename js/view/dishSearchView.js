@@ -33,10 +33,10 @@ var DishSearchView = function(container, model) {
   //TODO
   // Query functions for the model (get the right food)
 
-  //TODO
+  // Populate the search thingy with main dishes, for now
   model.getAllDishes('main dish').forEach(data => {
     console.log("data", data);
-    var lel = new DishItem(data);
+    var lel = new DishItem(data, model);
     $(dishContainer).append(lel);
   });
 };

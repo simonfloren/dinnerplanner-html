@@ -2,11 +2,9 @@
  * 
  * Renders the card for a single dish item
  * 
- * @param {jQuery object} container - references the HTML parent element that
- * will become the card
  * @param {Object} data - the dish data
  */
-var DishItem = function(data) {
+var DishItem = function(data, model) {
   
   var cardWrapper = document.createElement("div");
   cardWrapper.setAttribute("class", "col-md-2 dish-card");
@@ -23,13 +21,18 @@ var DishItem = function(data) {
 
   var innerDiv = document.createElement("div");
   innerDiv.setAttribute("id", "dishName");
-  innerDiv.setAttribute("class", "card-body text-center");
+  innerDiv.setAttribute("class", "list-group list-group-flush");
 
-  var text = document.createElement("p");
-  text.setAttribute("class", "card-text");
-  text.textContent = data['name'];
+  var name = document.createElement("li");
+  name.setAttribute("class", "list-group-item");
+  name.textContent = data['name'];
+  
+  var price = document.createElement("li");
+  price.setAttribute("class", "list-group-item");
+  price.textContent = "Price: " + model.getDishPrice(data) + " SEK";
 
-  innerDiv.appendChild(text);
+  innerDiv.appendChild(name);
+  innerDiv.appendChild(price);
   card.appendChild(innerDiv);
   cardWrapper.appendChild(card);
 

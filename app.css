@@ -84,6 +84,7 @@ div#welcome {
   width: 350px;
 }
 
-.vertical {
-  border-right: 1px dashed #333;
+#overview__header span {
+  font-size: 20px;
+  font-weight: bold;
 }
