@@ -83,3 +83,8 @@ div#welcome {
 .dish-img {
   width: 350px;
 }
+
+#overview__header span {
+  font-size: 20px;
+  font-weight: bold;
+}
