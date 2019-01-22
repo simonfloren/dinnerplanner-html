@@ -169,7 +169,7 @@ var DinnerModel = function() {
 	
 	this.setNumberOfGuests = function(num) {
 		// By assumption num will always be 1 or -1
-		numberOfGuests += num;
+		numberOfGuests = num;
 	}
 	
 	this.getNumberOfGuests = function() {
@@ -280,13 +280,20 @@ var DinnerModel = function() {
 	  });	
 	}
 
-	// the dishes variable contains an array of all the 
-	// dishes in the database. each dish has id, name, type,
-	// image (name of the image file), description and
-	// array of ingredients. Each ingredient has name, 
-	// quantity (a number), price (a number) and unit (string 
-	// defining the unit i.e. "g", "slices", "ml". Unit
-	// can sometimes be empty like in the example of eggs where
+	this.getDishTypes = function() {
+		return types;
+	};
+
+
+	// All types of dishes
+	var types = ['Starter', 'Main dish', 'Dessert'];
+
+
+	// the dishes variable contains an array of all the dishes in the database.
+	// each dish has id, name, type, image (name of the image file), description
+	// and array of ingredients. Each ingredient has name, quantity (a number),
+	// price (a number) and unit (string defining the unit i.e. "g", "slices",
+	// "ml"). Unit can sometimes be empty like in the example of eggs where
 	// you just say "5 eggs" and not "5 pieces of eggs" or anything else.
 	var dishes = [{
 		'id':1,

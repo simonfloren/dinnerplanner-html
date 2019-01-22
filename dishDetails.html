@@ -27,40 +27,29 @@
                     <div id="description" class="col-sm-6">
                         <p>Pizza</p>
                         <div id="detailsImg" class="dish-img">
-                            <img class="img-fluid" src="https://png.pngtree.com/element_origin_min_pic/16/09/16/1557db9c33ec956.jpg"
+                            <img id="detail-img" class="img-fluid" src="https://png.pngtree.com/element_origin_min_pic/16/09/16/1557db9c33ec956.jpg"
                                 alt="dish image">
                         </div>
-                        <p>Lorem ipsum</p>
+                        <p id="description">Lorem ipsum</p>
                         <button type="button" class="btn btn-primary">Back to search</button>
                     </div>
 
                     <div class="card col-sm-5" style="margin:5px;">
                         <div class="card-body">
-                            <h5 class="card-title"><span>Ingredients for </span> <span id="numberOfPeople">x</span>
+                            <h5 class="card-title"><span>Ingredients for </span> <span id="numberOfGuests">x</span>
                                 <span> people</span></h5>
                             <table class="table">
                                 <tbody>
-                                    <!-- Make this dynamic -->
-                                    <tr>
-                                        <td>2 tbsp</td>
-                                        <td>salt</td>
-                                        <td>SEK</td>
-                                        <td>123</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5 kg</td>
-                                        <td>meat</td>
-                                        <td>SEK</td>
-                                        <td>111</td>
+                                    <tr id="ingredient-row0">
                                     </tr>
                                 </tbody>
                             </table>
                             <div id="sameRow">
                                 <div>
-                                    <button type="button" class="btn btn-primary">Add to menu</button>
+                                    <button id="addDishBtn" type="button" class="btn btn-primary">Add to menu</button>
                                 </div>
                                 <div>
-                                    <p class="text-right">SEK X</p>
+                                    <span class="text-right">SEK </span><span id="dish-price">0.00</span>
                                 </div>
                             </div>
                         </div>

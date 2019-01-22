@@ -23,37 +23,21 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text">People</span>
 						</div>
-						<input type="text" class="form-control" placeholder="0" aria-label="0" aria-describedby="button-addon4" readonly>
+						<input type="text" id="numberOfGuests" class="form-control" placeholder="0" aria-label="0" aria-describedby="button-addon4">
 						<div class="input-group-append" id="button-addon4">
-							<button class="btn btn-outline-secondary addBtn" type="button">+</button>
-							<button class="btn btn-outline-secondary remBtn" type="button">-</button>
+							<button id="plusGuest" class="btn btn-outline-secondary addBtn" type="button">+</button>
+							<button id="minusGuest" class="btn btn-outline-secondary remBtn" type="button">-</button>
 						</div>
 					</div>
 				</div>
 				<div id="sidebar__body">
-					<div id="sidebar__body__table">
-						<table class="table">
-							<thead>
-								<tr>
-									<th scope="col">Dish name</th>
-									<th scope="col">Cost</th>
-								</tr>
-							</thead>
-							<tbody>
-								<!-- Make this dynamic -->
-								<tr>
-									<td>Food1</td>
-									<td>111</td>
-								</tr>
-								<tr>
-									<td>Food2</td>
-									<td>222</td>
-								</tr>
-							</tbody>
-						</table>
+					<div id="sidebar__body__list">
+						<ul id="dish-list" class="list-group">
+
+                        </ul>
 					</div>
 					<div>
-						<p class="text-right">SEK 0.00</p>
+						<p id="dinner-price" class="text-right">SEK 0.00</p>
 					</div>
 					<div class="text-center">
 						<button type="button" class="btn btn-primary">Confirm dinner</button>
@@ -83,7 +67,11 @@
 
 	<!-- The application JavaScript code -->
 	<script src="js/app.js"></script>
+	<script src="js/model/dinnerModel.js"></script>
 	<!-- TODO: Here you should include JS code for your other views -->
+	<script src="js/view/dishItem.js"></script>
+  <script src="js/view/dishSearchView.js"></script>
+  <script src="js/view/sidebarView.js"></script>
 </body>
 
 </html>
