@@ -83,3 +83,7 @@ div#welcome {
 .dish-img {
   width: 350px;
 }
+
+.vertical {
+  border-right: 1px dashed #333;
+}
