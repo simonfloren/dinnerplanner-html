@@ -91,8 +91,13 @@ var DinnerModel = function() {
 	// Remove observer, might not work TEST
 	this.removeObserver = function(observer) {
 		observers = observers.filter(function(observer) {
-			return this.observer != observer;
+			return this.observer !== observer;
 		});
+	}
+
+	this.notifyObservers = function(details) { 
+		for(var i=0; i<observers.length; i++)
+			 observers[i](this, details);
 	}
 	
 	// Model functions start here
@@ -101,10 +106,7 @@ var DinnerModel = function() {
 		// By assumption num will always be 1 or -1
 		numberOfGuests = num;
 
-		this.notifyObservers = function(details) { 
-			for(var i=0; i<observers.length; i++)
-				 observers[i](this, details);
-		}
+		notifyObservers(details);
 	}
 	
 	this.getNumberOfGuests = function() {
@@ -145,10 +147,7 @@ var DinnerModel = function() {
 			totalPrice += ingredient.price;
 		});
 
-		this.notifyObservers = function(details) { 
-			for(var i=0; i<observers.length; i++)
-				 observers[i](this, details);
-		}
+		notifyObservers(details);
 	}
 
 	/** Returns the total price of the menu (all the ingredients multiplied by number of guests). */
@@ -196,10 +195,7 @@ var DinnerModel = function() {
 		
 		totalPrice += this.getDishPrice(newDish);
 
-		this.notifyObservers = function(details) {
-			for(var i=0; i<observers.length; i++)
-				 observers[i](this, details);
-		}
+		notifyObservers(details);
 	}	
 
 	/** function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")

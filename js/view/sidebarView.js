@@ -21,7 +21,8 @@ var SidebarView = function (container, model) {
     this.plusButton = container.find('#plusGuest');
     this.minusButton = container.find('#minusGuest');
 
-    // Add listener for guest plus button
+    // This is replaced in the coresponding controller
+    /* // Add listener for guest plus button
     $(this.plusButton).click(function () {
         console.log("Plus button clicked");
         var currentGuests = model.getNumberOfGuests();
@@ -44,7 +45,7 @@ var SidebarView = function (container, model) {
         model.setNumberOfGuests(currentGuests);
         selectedGuests.val(currentGuests);
         console.log("Current number of guests: ", currentGuests);
-    });
+    }); */
 
     // Add listener for changing the number of guests directly in the input field
     $(selectedGuests).change(function () {
