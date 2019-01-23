@@ -4,14 +4,14 @@
 var MenuOverviewView = function(container, model) {
 
   var numberOfPeopleContainer = container.find("#numberOfGuests");
-  var overViewBodyContainer   = container.find("#overview__body");
-  var priceContainer          = container.find("#totalMenuPrice");
+  var overViewBodyContainer   = container.find("#printCards");
+  var priceContainer          = container.find("#totalPrice");
 
   // update number of people
   numberOfPeopleContainer.html(model.getNumberOfGuests());
 
   // Populate the overview with main dishes, for now
-  model.getAllDishes('main dish').forEach(data => {
+  model.getFullMenu().forEach(data => {
     console.log("data", data);
     var dish = new DishItem(data, model);
     $(overViewBodyContainer).append(dish);

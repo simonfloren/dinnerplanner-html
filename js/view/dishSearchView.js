@@ -26,7 +26,7 @@ var DishSearchView = function(container, model) {
          .text(type));
   });
 
-  // Might not be needed, we're building a form sdasdasdasd
+  // Might not be needed, we're building a form
   var keyWords = keyWordsAttribute.val().split();
   console.log("New set of keywords", keyWords);
 
