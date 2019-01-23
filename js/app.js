@@ -20,5 +20,5 @@ $(function() {
 
 	var printoutView = new PrintoutView($('#printout-container'), model);
 
-	var dishDetails = new DishDetails($())
+	var dishDetails = new DishDetails($(''))
 });
