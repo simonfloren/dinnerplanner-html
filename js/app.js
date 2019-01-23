@@ -12,11 +12,13 @@ $(function() {
 	 * of the specific view you're working with (see exampleView.js).
 	 */
 
-	// var sidebar = new SidebarView($("#sidebar"), model);
+	var sidebar = new SidebarView($("#sidebar"), model);
 
-	// var dishSearch = new DishSearchView($('#dishSearch'), model);
+	var dishSearch = new DishSearchView($('#dishSearch'), model);
 
 	var menuOverView = new MenuOverviewView($('#overview'), model);
-	
-	// var printoutView = new PrintoutView($('#printout-container'), model);
+
+	var printoutView = new PrintoutView($('#printout-container'), model);
+
+	var dishDetails = new DishDetails($())
 });

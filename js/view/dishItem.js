@@ -3,11 +3,12 @@
  * Renders the card for a single dish item
  * 
  * @param {Object} data - the dish data
+ * @param {Object} model - the reference to the Dinner Model
  */
 var DishItem = function(data, model) {
   
   var cardWrapper = document.createElement("div");
-  cardWrapper.setAttribute("class", "col-md-2 dish-card");
+  cardWrapper.setAttribute("class", "col-md-4 dish-card");
   
   var card = document.createElement("div");
   card.setAttribute("id", "dishItem");
@@ -32,7 +33,7 @@ var DishItem = function(data, model) {
   price.textContent = "Price: " + model.getDishPrice(data) + " SEK";
 
   innerDiv.appendChild(name);
-  innerDiv.appendChild(price);
+  // innerDiv.appendChild(price);
   card.appendChild(innerDiv);
   cardWrapper.appendChild(card);
 

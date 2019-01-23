@@ -8,6 +8,12 @@
  * @param {Object} model - the reference to the Dinner Model
  */
 var DishSearchView = function(container, model) {
+
+  if(typeof container === 'undefined') {
+    console.error("Undefined container");
+    return;
+  }
+
   console.log("Initializing Dish Search View..");
 
   var keyWordsAttribute = container.find('#keyWords');

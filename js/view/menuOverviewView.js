@@ -2,6 +2,10 @@
  * 
  */
 var MenuOverviewView = function(container, model) {
+  if(typeof container === 'undefined') {
+    console.error("Undefined container");
+    return;
+  }
 
   var numberOfPeopleContainer = container.find("#numberOfGuests");
   var overViewBodyContainer   = container.find("#printCards");

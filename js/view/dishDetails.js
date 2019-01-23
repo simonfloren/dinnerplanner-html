@@ -9,6 +9,4 @@ var DishDetails = function(container, model) {
 
     var guests = container.find('#numberOfGuests');
     guests.val(model.getNumberOfGuests());
-
-    
 };
