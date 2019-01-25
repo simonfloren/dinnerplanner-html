@@ -3,6 +3,8 @@ var DishDetails = function(container, model) {
 
     var description = container.find('#description');
 
+    var ingredients = container.find('#ingredient-table');
+
     this.addButton = container.find('#addDishBtn');
 
     var price = container.find('#dish-price');
@@ -11,7 +13,7 @@ var DishDetails = function(container, model) {
     guests.val(model.getNumberOfGuests());
 
     this.update = function (model, changeDetails) {
-
+        
     }
     model.addObserver(update);
 };
