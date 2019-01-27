@@ -106,7 +106,9 @@ var DinnerModel = function () {
 		// By assumption num will always be 1 or -1
 		numberOfGuests = num;
 
-		notifyObservers(details);
+		var details = {};
+
+		this.notifyObservers(details);
 	}
 
 	this.getNumberOfGuests = function () {
