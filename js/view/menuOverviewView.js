@@ -25,5 +25,9 @@ var MenuOverviewView = function(container, model) {
   var price = model.getTotalMenuPrice();
   priceContainer.html(price);
 
-  
+  // Simple
+  this.update = function(model) {
+    numberOfPeopleContainer.html(model.getNumberOfGuests());
+  }
+  model.addObserver(update);
 }

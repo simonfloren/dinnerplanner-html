@@ -79,7 +79,7 @@ var SidebarView = function (container, model) {
 
     // Simple
     this.update = function (model, changeDetails) {
-        ul.children().remove();
+        ul.children().remove(); // TEST
         var menu = model.getFullMenu();
         menu.forEach(dish => {
             var li = document.createElement("li");

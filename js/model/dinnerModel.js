@@ -110,7 +110,7 @@ var DinnerModel = function() {
 	}
 	
 	this.getNumberOfGuests = function() {
-		//TODO Lab 1
+		// TODO Lab 1
 		return numberOfGuests;
 	}
 
