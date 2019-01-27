@@ -11,9 +11,4 @@ var DishDetails = function(container, model) {
 
     var guests = container.find('#numberOfGuests');
     guests.val(model.getNumberOfGuests());
-
-    this.update = function (model, changeDetails) {
-        
-    }
-    model.addObserver(update);
 };
