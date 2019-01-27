@@ -1,7 +1,7 @@
-$(function() {
+$(function () {
 	//We instantiate our model
 	var model = new DinnerModel();
-	
+
 	// // And create the instance of ExampleView
 	// var exampleView = new ExampleView($("#exampleView"));
 
@@ -12,7 +12,8 @@ $(function() {
 	 * of the specific view you're working with (see exampleView.js).
 	 */
 
-	var sidebar = new SidebarView($("#sidebar"), model);
+	var sidebarView = new SidebarView($("#sidebar"), model);
+	var sidebarController = new SidebarController(sidebarView, model);
 
 	var dishSearch = new DishSearchView($('#dishSearch'), model);
 
@@ -20,5 +21,5 @@ $(function() {
 
 	var printoutView = new PrintoutView($('#printout-container'), model);
 
-	var dishDetails = new DishDetails($(''))
+	var dishDetails = new DishDetails($(''), model)
 });

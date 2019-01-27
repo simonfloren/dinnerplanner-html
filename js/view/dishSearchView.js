@@ -7,29 +7,29 @@
  * @param {jQuery object} container - references the HTML parent element that contains the view.
  * @param {Object} model - the reference to the Dinner Model
  */
-var DishSearchView = function(container, model) {
+var DishSearchView = function (container, model) {
 
-  if(typeof container === 'undefined') {
+  if (typeof container === 'undefined') {
     console.error("Undefined container");
     return;
   }
 
-  console.log("Initializing Dish Search View..");
+  console.info("[DishSearchView] Initializing..");
 
   var keyWordsAttribute = container.find('#keyWords');
-  var selectBox         = container.find('#dishTypeSelect');
-  var dishContainer     = container.find('#dishSearchBody');
+  var selectBox = container.find('#dishTypeSelect');
+  var dishContainer = container.find('#dishSearchBody');
 
-  console.log("dish container", dishContainer);
+  console.log("Dish container", dishContainer);
 
   // load options into option field
   const dishTypes = model.getDishTypes();
   $(selectBox).children().remove(); // remove all junk
   dishTypes.forEach((type, index) => {
     $(selectBox)
-         .append($("<option></option>")
-         .attr("value", index)
-         .text(type));
+      .append($("<option></option>")
+      .attr("value", index)
+      .text(type));
   });
 
   // Might not be needed, we're building a form
@@ -47,8 +47,8 @@ var DishSearchView = function(container, model) {
   });
 
   // Incremental
-  this.update = function(model, changeDetails) {
-    
+  this.update = function (model, changeDetails) {
+
   }
-  model.addObserver(update);
+  model.addObserver(this.update);
 };
