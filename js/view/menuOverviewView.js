@@ -24,4 +24,6 @@ var MenuOverviewView = function(container, model) {
   // populate price field
   var price = model.getTotalMenuPrice();
   priceContainer.html(price);
+
+  
 }

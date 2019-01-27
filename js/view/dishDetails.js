@@ -10,5 +10,10 @@ var DishDetails = function(container, model) {
     var price = container.find('#dish-price');
 
     var guests = container.find('#numberOfGuests');
-    guests.val(model.getNumberOfGuests());
+
+    // Simple
+    this.update = function(model) {
+        guests.val(model.getNumberOfGuests());
+    }
+    model.addObserver(update);
 };

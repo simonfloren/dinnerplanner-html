@@ -45,4 +45,10 @@ var DishSearchView = function(container, model) {
     var lel = new DishItem(data, model);
     $(dishContainer).append(lel);
   });
+
+  // Incremental
+  this.update = function(model, changeDetails) {
+    
+  }
+  model.addObserver(update);
 };

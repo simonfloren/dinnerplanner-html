@@ -88,7 +88,7 @@ var DinnerModel = function() {
 	var observers=[];
 	this.addObserver = function(observer) { observers.push(observer); }
 
-	// Remove observer, might not work TEST
+	// Remove observer, might not work TEST, != or !==?
 	this.removeObserver = function(observer) {
 		observers = observers.filter(function(observer) {
 			return this.observer !== observer;

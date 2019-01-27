@@ -9,10 +9,10 @@
  * @param {Object} model - the reference to the Dinner Model
  */
 var SidebarView = function (container, model) {
-    if(typeof container === 'undefined') {
+    if (typeof container === 'undefined') {
         console.error("Undefined container");
         return;
-      }
+    }
     console.log("Initializing sidebar..");
 
     var selectedGuests = container.find('#numberOfGuests');
@@ -48,7 +48,7 @@ var SidebarView = function (container, model) {
     }); */
 
     // Add listener for changing the number of guests directly in the input field
-    $(selectedGuests).change(function () {
+    /* $(selectedGuests).change(function () {
         var newNumberOfGuests = selectedGuests.val();
         if (newNumberOfGuests < 0) {
             newNumberOfGuests = 0;
@@ -56,7 +56,7 @@ var SidebarView = function (container, model) {
         }
         console.log("Selected guests number changed", newNumberOfGuests);
         model.setNumberOfGuests(newNumberOfGuests);
-    });
+    }); */
 
     // Render table
     this.table = container.find('#selected-dishes');
@@ -64,29 +64,37 @@ var SidebarView = function (container, model) {
     var ul = document.querySelector("ul");
     var totPrice = 0;
     menu.forEach(dish => {
-      var li = document.createElement("li");
-      li.className = "list-group-item";
-      var dishPrice = 0;
-      dish.ingredients.forEach(ingredient => {
-          dishPrice += ingredient.price;
-      });
-      li.textContent = dish.name + "    " + dishPrice;
-      totPrice += dishPrice;
-      ul.append(li);
-    });
-    var dinnerPrice = container.find('#dinner-price');
-    dinnerPrice.html("SEK " + totPrice);
-    /* menu.forEach(dish => {
         var li = document.createElement("li");
         li.className = "list-group-item";
         var dishPrice = 0;
         dish.ingredients.forEach(ingredient => {
             dishPrice += ingredient.price;
         });
-        li.textContent = dish.name + "    " + (dishPrice * model.getNumberOfGuests());
-        totPrice += (dishPrice * model.getNumberOfGuests());
-        ul.appendChild(li);
-      });
-      var dinnerPrice = container.find('#dinner-price');
-      dinnerPrice.html("SEK " + totPrice); */
+        li.textContent = dish.name + "    " + dishPrice;
+        totPrice += dishPrice;
+        ul.append(li);
+    });
+    var dinnerPrice = container.find('#dinner-price');
+    dinnerPrice.html("SEK " + totPrice);
+
+    // Simple
+    this.update = function (model, changeDetails) {
+        ul.children().remove();
+        var menu = model.getFullMenu();
+        menu.forEach(dish => {
+            var li = document.createElement("li");
+            li.className = "list-group-item";
+            var dishPrice = 0;
+            dish.ingredients.forEach(ingredient => {
+                dishPrice += ingredient.price;
+            });
+            li.textContent = dish.name + "    " + dishPrice;
+            totPrice += dishPrice;
+            ul.append(li);
+        });
+        dinnerPrice.html("SEK " + totPrice);
+
+        selectedGuests = model.getNumberOfGuests();
+    }
+    model.addObserver(update);
 };
