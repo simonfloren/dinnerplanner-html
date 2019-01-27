@@ -13,6 +13,8 @@ $(function () {
 	 */
 
 	var sidebarView = new SidebarView($("#sidebar"), model);
+	sidebarView.init();
+	console.log("side", sidebarView);
 	var sidebarController = new SidebarController(sidebarView, model);
 
 	var dishSearch = new DishSearchView($('#dishSearch'), model);
