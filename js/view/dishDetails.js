@@ -1,35 +1,42 @@
 var DishDetails = function (container, model) {
 
+    if (typeof container === 'undefined') {
+        console.error("Undefined container");
+        return;
+    }
+
+    // Public functions
+    var update, removeView;
+
+    // DOM Elements
+    var $image, $name, $desc, $guests, $ingredients, $price;
+
+    init = function () {
+        $image = container.find('#detail-img');
+        $name = container.find('#dishName');
+        $description = container.find('#description');
+        $guests = container.find('#numberOfGuests');
+        $price = container.find('#dish-price');
+
+        model.addObserver(this.update);
+
+        render();
+    }
+
     // Simple
-    this.update = function (model) {
+    render = function (model) {
         guests.val(model.getNumberOfGuests());
+        image.src = ""; // Send in data here, method to do so not implemented yet    
+        name.html(); // Send in data here, method to do so not implemented yet  
+        description.html(); // Send in data here, method to do so not implemented yet
     }
 
     this.removeView = function () {
         model.removeObserver(this.update);
     }
 
-    if (typeof container === 'undefined') {
-        console.error("Undefined container");
-        return;
+    update = function () {
+        render();
     }
-    console.info("[dishDetails] Initializing..");
 
-    this.image = container.find('#detail-img');
-    image.src=""; // Send in data here, method to do so not implemented yet
-
-    var name = container.find('#dishName');
-    name.html(); // Send in data here, method to do so not implemented yet
-
-    var description = container.find('#description');
-    description.html(); // Send in data here, method to do so not implemented yet
-
-    var guests = container.find('#numberOfGuests');
-    guests.val(model.getNumberOfGuests());
-
-    var ingredients = container.find('#ingredient-table');
-
-    var price = container.find('#dish-price');
-
-    model.addObserver(this.update);
 };

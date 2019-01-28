@@ -13,6 +13,7 @@ class SidebarView {
   constructor(container, model) {
     console.info("[SidebarView] Initializing..");
 
+
     if (typeof container === 'undefined') {
       console.error("Undefined container");
       return;
@@ -34,13 +35,14 @@ class SidebarView {
     model.addObserver(this.update);
 
     //render table to dom
-    render();
+    render(model);
   }
 
-  // Simple
-  update = function (model, changeDetails) {
-    ul.children().remove();
-    var menu = model.getFullMenu();
+  // Simple Observer
+  render = function (model, changeDetails) {
+    $dishList.children().remove();
+    menu = model.getFullMenu();
+
     menu.forEach(dish => {
       var li = document.createElement("li");
       li.className = "list-group-item";
@@ -50,32 +52,19 @@ class SidebarView {
       });
       li.textContent = dish.name + "    " + dishPrice;
       totPrice += dishPrice;
-      ul.append(li);
+      $dishList.append(li);
     });
-    dinnerPrice.html("SEK " + totPrice);
 
-    selectedGuests = model.getNumberOfGuests();
+    $dinnerPrice.html("SEK " + totPrice);
+    $numberOfGuests.html(model.getNumberOfGuests());
   }
 
+  update = function () {
+    render();
+  }
+  
   removeView = function () {
     model.removeObserver(this.update);
   }
-
-  // Render table
-  render = function() {
-    menu.forEach(dish => {
-      var li = document.createElement("li");
-      li.className = "list-group-item";
-      var dishPrice = 0;
-      dish.ingredients.forEach(ingredient => {
-        dishPrice += ingredient.price;
-      });
-      li.textContent = dish.name + "    " + dishPrice;
-      totPrice += dishPrice;
-      ul.append(li);
-    });
-    var dinnerPrice = container.find('#dinner-price');
-    dinnerPrice.html("SEK " + totPrice);
-  }
-
-};
+  
+}
