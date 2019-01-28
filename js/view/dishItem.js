@@ -5,30 +5,30 @@
  * @param {Object} data - the dish data
  * @param {Object} model - the reference to the Dinner Model
  */
-var DishItem = function(data, model) {
+let DishItem = function(data, model) {
   
-  var cardWrapper = document.createElement("div");
+  let cardWrapper = document.createElement("div");
   cardWrapper.setAttribute("class", "col-md-4 dish-card");
   
-  var card = document.createElement("div");
+  let card = document.createElement("div");
   card.setAttribute("id", "dishItem");
   card.setAttribute("class", "card"); 
 
-  var img = document.createElement("img");
+  let img = document.createElement("img");
   img.setAttribute("class", "card-img-top img-fluid");
   img.setAttribute("src", "images/" + data['image']);
   img.setAttribute("alt", data['name']);
   card.appendChild(img);
 
-  var innerDiv = document.createElement("div");
+  let innerDiv = document.createElement("div");
   innerDiv.setAttribute("id", "dishName");
   innerDiv.setAttribute("class", "list-group list-group-flush");
 
-  var name = document.createElement("li");
+  let name = document.createElement("li");
   name.setAttribute("class", "list-group-item");
   name.textContent = data['name'];
   
-  var price = document.createElement("li");
+  let price = document.createElement("li");
   price.setAttribute("class", "list-group-item");
   price.textContent = "Price: " + model.getDishPrice(data) + " SEK";
 

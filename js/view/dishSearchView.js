@@ -7,48 +7,56 @@
  * @param {jQuery object} container - references the HTML parent element that contains the view.
  * @param {Object} model - the reference to the Dinner Model
  */
-var DishSearchView = function (container, model) {
+class DishSearchView {
 
-  if (typeof container === 'undefined') {
-    console.error("Undefined container");
-    return;
+  constructor(container, model) {
+    console.info("[dishSearchView] Initializing..");
+
+    if (typeof container === 'undefined') {
+      console.error("Undefined container");
+      return;
+    }
+
+    let keyWordsAttribute = container.find('#keyWords');
+    let selectBox = container.find('#dishTypeSelect');
+    let dishContainer = container.find('#dishSearchBody');
+
+    //console.log("Dish container", dishContainer);
+    
+    //attach to model
+    model.addObserver(this.update);
+
+    //render table to dom
+    render(model);
   }
 
-  console.info("[DishSearchView] Initializing..");
+  render = function(model) {
+    const dishTypes = model.getDishTypes();
+    this.selectBox.children().remove();
+    dishTypes.forEach((type, index) => {
+      selectBox
+      .append(document.createElement("<option></option>")
+        .attr("value", index)
+        .text(type)
+      );
+    });
 
-  var keyWordsAttribute = container.find('#keyWords');
-  var selectBox = container.find('#dishTypeSelect');
-  var dishContainer = container.find('#dishSearchBody');
+    // Might not be needed, we're building a form
+    var keyWords = keyWordsAttribute.val().split();
+    console.log("New set of keywords", keyWords);
 
-  console.log("Dish container", dishContainer);
-
-  // load options into option field
-  const dishTypes = model.getDishTypes();
-  $(selectBox).children().remove(); // remove all junk
-  dishTypes.forEach((type, index) => {
-    $(selectBox)
-      .append($("<option></option>")
-      .attr("value", index)
-      .text(type));
-  });
-
-  // Might not be needed, we're building a form
-  var keyWords = keyWordsAttribute.val().split();
-  console.log("New set of keywords", keyWords);
-
-  //TODO
-  // Query functions for the model (get the right food)
-
-  // Populate the search thingy with main dishes, for now
-  model.getAllDishes('main dish').forEach(data => {
-    console.log("data", data);
-    var lel = new DishItem(data, model);
-    $(dishContainer).append(lel);
-  });
-
-  // Incremental
-  this.update = function (model, changeDetails) {
-
+    model.getAllDishes('main dish').forEach(data => {
+      console.log("data", data);
+      let newDish = new DishItem(data, model);
+      this.dishContainer.append(newDish);
+    });
   }
-  model.addObserver(this.update);
+
+  update = function () {
+    render();
+  }
+  
+  removeView = function () {
+    model.removeObserver(this.update);
+  }
 };
