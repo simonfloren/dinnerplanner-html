@@ -13,7 +13,6 @@ class SidebarView {
   constructor(container, model) {
     console.info("[SidebarView] Initializing..");
 
-
     if (typeof container === 'undefined') {
       console.error("Undefined container");
       return;
@@ -39,8 +38,8 @@ class SidebarView {
   }
 
   // Simple Observer
-  render = function (model, changeDetails) {
-    $dishList.children().remove();
+  render(model, changeDetails) {
+    dishList.children().remove();
     menu = model.getFullMenu();
 
     menu.forEach(dish => {
@@ -52,18 +51,18 @@ class SidebarView {
       });
       li.textContent = dish.name + "    " + dishPrice;
       totPrice += dishPrice;
-      $dishList.append(li);
+      dishList.append(li);
     });
 
     $dinnerPrice.html("SEK " + totPrice);
     $numberOfGuests.html(model.getNumberOfGuests());
   }
 
-  update = function () {
+  update() {
     render();
   }
   
-  removeView = function () {
+  removeView() {
     model.removeObserver(this.update);
   }
   

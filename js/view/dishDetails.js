@@ -1,42 +1,49 @@
-var DishDetails = function (container, model) {
+class DishDetails {
 
-    if (typeof container === 'undefined') {
-        console.error("Undefined container");
-        return;
-    }
+    constructor(container, model) {
+        console.info("[dishDetailsView] Initializing..");
 
-    // Public functions
-    var update, removeView;
+        if (typeof container === 'undefined') {
+            console.error("Undefined container");
+            return;
+        }
 
-    // DOM Elements
-    var $image, $name, $desc, $guests, $ingredients, $price;
+        this.model = model;
+        this.container = container;
 
-    init = function () {
-        $image = container.find('#detail-img');
-        $name = container.find('#dishName');
-        $description = container.find('#description');
-        $guests = container.find('#numberOfGuests');
-        $price = container.find('#dish-price');
+        //get dom elements
+        this.image = container.find('#detail-img');
+        this.name = container.find('#dishName');
+        this.description = container.find('#description');
+        this.guests = container.find('#numberOfGuests');
+        this.price = container.find('#dish-price');
 
         model.addObserver(this.update);
 
-        render();
+        render(model);
     }
 
     // Simple
-    render = function (model) {
+    render(model, changeDetails) {
+        // changeDetails will contain the dish id
+        // When the user is routed to this view by the controller
+        // We should try to pass the changedetails
+
+        // then we can get the description and name and prep
+        // but not image link
+
         guests.val(model.getNumberOfGuests());
         image.src = ""; // Send in data here, method to do so not implemented yet    
         name.html(); // Send in data here, method to do so not implemented yet  
         description.html(); // Send in data here, method to do so not implemented yet
     }
 
-    this.removeView = function () {
-        model.removeObserver(this.update);
+    update() {
+        render();
     }
 
-    update = function () {
-        render();
+    removeView() {
+        model.removeObserver(this.update);
     }
 
 };

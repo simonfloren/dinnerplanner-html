@@ -1,15 +1,15 @@
 /**
  * 
  */
-var MenuOverviewView = function(container, model) {
+let MenuOverviewView = function(container, model) {
   if(typeof container === 'undefined') {
     console.error("Undefined container");
     return;
   }
 
-  var numberOfPeopleContainer = container.find("#numberOfGuests");
-  var overViewBodyContainer   = container.find("#printCards");
-  var priceContainer          = container.find("#totalPrice");
+  let numberOfPeopleContainer = container.find("#numberOfGuests");
+  let overViewBodyContainer   = container.find("#printCards");
+  let priceContainer          = container.find("#totalPrice");
 
   // update number of people
   numberOfPeopleContainer.html(model.getNumberOfGuests());
@@ -17,17 +17,11 @@ var MenuOverviewView = function(container, model) {
   // Populate the overview with main dishes, for now
   model.getFullMenu().forEach(data => {
     console.log("data", data);
-    var dish = new DishItem(data, model);
-    $(overViewBodyContainer).append(dish);
+    let dish = new DishItem(data, model);
+    overViewBodyContainer.append(dish);
   });
 
   // populate price field
-  var price = model.getTotalMenuPrice();
+  let price = model.getTotalMenuPrice();
   priceContainer.html(price);
-
-  // Simple
-  this.update = function(model) {
-    numberOfPeopleContainer.html(model.getNumberOfGuests());
-  }
-  model.addObserver(update);
 }

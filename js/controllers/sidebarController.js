@@ -1,5 +1,5 @@
 // is this called from within the view or app.js/general controller?
-var SidebarController = function (view, model) {
+let SidebarController = function (view, model) {
   console.info("[SidebarController] Initializing..");
   console.log("ASD", view);
   console.log(view.plusButton);
