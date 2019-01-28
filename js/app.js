@@ -1,6 +1,6 @@
-$(function () {
+window.onload = function() {
 	//We instantiate our model
-	var model = new DinnerModel();
+	const model = new DinnerModel();
 
 	// // And create the instance of ExampleView
 	// var exampleView = new ExampleView($("#exampleView"));
@@ -12,14 +12,14 @@ $(function () {
 	 * of the specific view you're working with (see exampleView.js).
 	 */
 
-	var sidebarView = new SidebarView($("#sidebar"), model);
-	var sidebarController = new SidebarController(sidebarView, model);
+	const sidebarView = new SidebarView($("#sidebar"), model);
+	const sidebarController = new SidebarController(sidebarView, model);
 
-	var dishSearch = new DishSearchView($('#dishSearch'), model);
+	const dishSearch = new DishSearchView($('#dishSearch'), model);
 
-	var menuOverView = new MenuOverviewView($('#overview'), model);
+	const menuOverView = new MenuOverviewView($('#overview'), model);
 
-	var printoutView = new PrintoutView($('#printout-container'), model);
+	const printoutView = new PrintoutView($('#printout-container'), model);
 
-	var dishDetails = new DishDetails($(''), model)
-});
+	const dishDetails = new DishDetails($(''), model)
+};
