@@ -8,35 +8,27 @@
  * @param {jQuery object} container - references the HTML parent element that contains the view.
  * @param {Object} model - the reference to the Dinner Model
  */
-var SidebarView = (function(container, model) {
-
-  if (typeof container === 'undefined') {
-    console.error("Undefined container");
-    return;
-  }
-
-  // Public functions
-  var update, removeView;
-
-  // DOM Elements
-  var $table, $ul, $plusButton, $minusButton;
-
-  // Variables
-  var menu;
-  var totPrice = 0;
-
-  /**** Init Sidebar View ****/
-  init = function() {
+class SidebarView {
+  
+  constructor(container, model) {
     console.info("[SidebarView] Initializing..");
 
-    //get menu
-    menu = model.getFullMenu();
+    if (typeof container === 'undefined') {
+      console.error("Undefined container");
+      return;
+    }
+
+    this.model = model;
+    this.container = container;
+
+    // Variables
+    this.totPrice = 0;
 
     //get dom elements
-    $table        = container.find('#selected-dishes');
-    ul            = document.querySelector("ul");
-    $plusButton   = container.find('#plusGuest');
-    $minusButton  = container.find('#minusGuest');
+    this.table        = container.find('#selected-dishes');
+    this.dishList     = document.querySelector("ul");
+    this.plusButton   = container.find('#plusGuest');
+    this.minusButton  = container.find('#minusGuest');
 
     //attach to model
     model.addObserver(this.update);
@@ -85,4 +77,5 @@ var SidebarView = (function(container, model) {
     var dinnerPrice = container.find('#dinner-price');
     dinnerPrice.html("SEK " + totPrice);
   }
-});
+
+};
