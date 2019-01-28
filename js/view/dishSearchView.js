@@ -52,11 +52,11 @@ class DishSearchView {
     });
   }
 
-  update = function () {
+  update() {
     render();
   }
   
-  removeView = function () {
+  removeView() {
     model.removeObserver(this.update);
   }
 };

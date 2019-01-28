@@ -86,6 +86,17 @@ class DinnerModel {
 				}]
 			}];
 		
+		this._observers = [];		
+	}
+
+	addObserver(observer){
+		this._observers.push(observer);
+	 }
+	
+	notifyObservers(changeDetails) {
+		for(var i=0; i<this._observers.length; i++) {
+			this._observers[i].update(this, changeDetails);
+		}	
 	}
 
 	// Observers
@@ -106,7 +117,7 @@ class DinnerModel {
 
 	// Model functions start here
 
-	setNumberOfGuests = function (num) {
+	setNumberOfGuests(num) {
 		numberOfGuests = num;
 
 		let details = {};
@@ -114,7 +125,7 @@ class DinnerModel {
 		this.notifyObservers(details);
 	}
 
-	getNumberOfGuests = function () {
+	getNumberOfGuests() {
 		//TODO Lab 1
 		return numberOfGuests;
 	}
@@ -122,7 +133,7 @@ class DinnerModel {
 	/** BAD WRITING: Returns the dish that is on the menu for selected type
 	 *  Returns the dish from the dinner menu that meets the `selected type`
 	*/
-	getSelectedDish = function (type) {
+	getSelectedDish(type) {
 		for (let i = 0; i < menu.length; i++) {
 			if (menu[i].type == type) {
 				return menu[i];
@@ -131,13 +142,13 @@ class DinnerModel {
 	}
 
 	/** Returns all the dishes on the menu. */
-	getFullMenu = function () {
+	getFullMenu() {
 		//TODO Lab 1
 		return menu;
 	}
 
 	/** Returns all ingredients for all the dishes on the menu. */
-	getAllIngredients = function () {
+	getAllIngredients() {
 		let ingredients = [];
 		menu.forEach(value => {
 			ingredients.push(...value.ingredients);
@@ -150,7 +161,7 @@ class DinnerModel {
 	}
 
 	/** Forces update of total menu price */
-	updateMenuPrice = function () {
+	updateMenuPrice() {
 		totalPrice = 0;
 		this.getAllIngredients().forEach(ingredient => {
 			totalPrice += ingredient.price;
@@ -161,7 +172,7 @@ class DinnerModel {
 
 	// FEL
 	/** Returns the total price of the menu (all the ingredients multiplied by number of guests). */
-	getTotalMenuPrice = function () {
+	getTotalMenuPrice() {
 		//TODO Lab 1
 		let totalPrice = 0;
 		menu.forEach(dish => {
@@ -171,7 +182,7 @@ class DinnerModel {
 	}
 
 	/** Takes a dish and return the total price based on the ingredients */
-	getDishPrice = function (dish) {
+	getDishPrice(dish) {
 		const ingredients = dish.ingredients;
 		let price = 0;
 		ingredients.forEach(currentIngredient => {
@@ -181,7 +192,7 @@ class DinnerModel {
 	}
 
 	/** function that returns a dish of specific ID */
-	getDish = function (id) {
+	getDish(id) {
 		for (key in dishes) {
 			if (dishes[key].id == id) {
 				return dishes[key];
@@ -190,7 +201,7 @@ class DinnerModel {
 	}
 
 	/** Removes dish from menu */
-	removeDishFromMenu = function (id) {
+	removeDishFromMenu(id) {
 		menu = menu.filter(function (currentDish) {
 			return currentDish.id != id;
 		});
@@ -198,7 +209,7 @@ class DinnerModel {
 
 	/** Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	 * it is removed from the menu and the new one added. */
-	addDishToMenu = function (id) {
+	addDishToMenu(id) {
 		let newDish = this.getDish(id);
 		let prevDish = this.getSelectedDish(newDish.type);
 		if (typeof prevDish !== 'undefined') {
@@ -216,7 +227,7 @@ class DinnerModel {
 	 * you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	 * if you don't pass any filter all the dishes will be returned
 	 */
-	getAllDishes = function (type, filter) {
+	getAllDishes(type, filter) {
 		return dishes.filter(function (dish) {
 			let found = true;
 			if (filter) {
@@ -235,7 +246,7 @@ class DinnerModel {
 		});
 	}
 
-	getDishTypes = function () {
+	getDishTypes() {
 		return types;
 	};
 }

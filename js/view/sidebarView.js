@@ -38,7 +38,7 @@ class SidebarView {
   }
 
   // Simple Observer
-  render = function (model, changeDetails) {
+  render(model, changeDetails) {
     dishList.children().remove();
     menu = model.getFullMenu();
 
@@ -58,11 +58,11 @@ class SidebarView {
     $numberOfGuests.html(model.getNumberOfGuests());
   }
 
-  update = function () {
+  update() {
     render();
   }
   
-  removeView = function () {
+  removeView() {
     model.removeObserver(this.update);
   }
   
