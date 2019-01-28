@@ -12,10 +12,9 @@ window.onload = function() {
 	 * of the specific view you're working with (see exampleView.js).
 	 */
 
-	var sidebarView = new SidebarView($("#sidebar"), model);
-	sidebarView.init();
+	const sidebarView = new SidebarView($("#sidebar"), model);
 	console.log("side", sidebarView);
-	var sidebarController = new SidebarController(sidebarView, model);
+	const sidebarController = new SidebarController(sidebarView, model);
 
 	const dishSearch = new DishSearchView($('#dishSearch'), model);
 
