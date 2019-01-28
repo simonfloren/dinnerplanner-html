@@ -1,16 +1,60 @@
-html, body, .container {
-    height: 100%;
+html, body {
+  width: 100vw;
+  height: 100vh;
 }
 
-h4 {
-  padding-top: 20px;
-  padding-bottom: 10px;
+#page-wrapper {
+  background-color: aqua;
 }
 
-#siteHeader {
+.site-header {
   padding: 20px;
+  background-color: lightblue;
+  border-bottom: 1px solid lightgray;
 }
 
+.welcome-page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#printout-page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#printout__header {
+  padding: 20px;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+}
+
+#printout__body {
+  padding-left: 20px;
+}
+
+.dish-picture {
+  overflow: hidden;
+  height: auto;
+  width: 100%;
+  background-color: pink;
+}
+
+.dish-picture img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+
+
+
+
+
+
+/*
 .sidebar__header {
     background: pink;
     height: 50px;
@@ -18,15 +62,6 @@ h4 {
 
 .sidebar__body {
   background: lightcoral;
-}
-
-div#welcome {
-  /* flex-direction: column; */
-  /* justify-content: center; */
-}
-
-#welcome div {
-  /* justify-content: center; */
 }
 
 .testdiv {
@@ -107,3 +142,5 @@ div#welcome {
   font-weight: bold;
   margin-bottom: 15px;
 }
+
+*/

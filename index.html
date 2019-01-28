@@ -17,17 +17,16 @@
 
 <body>
 
-	<header id="siteHeader" class="row container-fluid text-center d-flex justify-content-center">
+	<header id="site-header" class="text-center site-header">
 		<h1>Dinner Planner</h1>
 	</header>
 
-	<div id="welcome" class="container d-flex justify-content-center flex-column">
-		
+	<div id="welcome-page" class="welcome-page d-none">
 		<div class="text-center">
 			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Food-luxury-pasta.svg/2000px-Food-luxury-pasta.svg.png"
-				alt="food picture" width="400" height="190">
+			 alt="food picture" width="400" height="190">
 		</div>
-		
+
 		</br>
 
 		<p class="text-center">
@@ -41,41 +40,42 @@
 
 	</div>
 
+	<div id="printout-page" class="printout-page d-none">
 
-	<div style="height: 100%; width: 100%;">
-		<div id="printout-container" class="container-fluid d-none">
-			<div id="printout__header" class="row d-flex justify-content-between">
-				<div>
-					<span>My dinner: </span><span id="numberOfGuests">x</span><span> people</span>
-				</div>
-				<button type="button" class="btn btn-primary">Go back and edit dinner</button>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="row">
-						<div class="col-md-6">
-							<img class="prep-img" src="https://png.pngtree.com/element_origin_min_pic/16/09/16/1557db9c33ec956.jpg" alt="dish image">
-						</div>
-						<div class="col-md-6">
-							<p id="dish-name">Pizza</p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-								ut
-								labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-								laboris
-								nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-								voluptate
-								velit
-								esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-								proident,
-								sunt
-								in culpa qui officia deserunt mollit anim id est laborum.
-							</p>
-						</div>
+		<div id="printout__header" class="d-flex justify-content-between">
+			<p>My dinner: </span><span id="numberOfGuests">x</span><span> people</p>
+			<button type="button" class="btn btn-primary">Go back and edit dinner</button>
+		</div>
+
+		<div id="printout__body" class="row">
+
+			<div class="dish-printout container-fluid d-flex">
+
+				<div class="col-md-4">
+					<div class="dish-picture">
+						<img class="prep-img" src="https://png.pngtree.com/element_origin_min_pic/16/09/16/1557db9c33ec956.jpg" alt="dish image">
 					</div>
 				</div>
-				<div class="col-md-6">
-					<p>Preparation</p>
+
+				<div class="col-md-4">
+					<h2 id="dish-name">Lasagne</h2>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+						ut
+						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+						laboris
+						nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+						voluptate
+						velit
+						esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident,
+						sunt
+						in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+				</div>
+
+				<div class="col-md-4">
+					<h4>Preperation</h4>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
 						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -89,165 +89,16 @@
 						nisi ut aliquip ex ea commodo consequat.
 					</p>
 				</div>
+
 			</div>
 		</div>
 	</div>
 
-	<div style="height: 100%; width: 100%;">
-		<div id="overview" class="container">
-			<div id="overview__header" class="row d-flex justify-content-between">
-				<div>
-					<span>My dinner: </span><span id="numberOfGuests">x</span><span> people</span>
-				</div>
-				<button type="button" class="btn btn-primary">Go back and edit dinner</button>
-			</div>
 
-			<div id="overview__body">
-				<div class="row d-flex justify-content-center" style="background-color: pink">
-					<div class="col-md-2">
 
-					</div>
-					<div id="printCards" class="col-md-6 d-flex">
-						<!-- Cards will be loaded from javascript into here -->
-					</div>
-					<div class="col-md-2">
-
-					</div>
-				</div>
-
-				<div class="row d-flex justify-content-center" style="background-color: aquamarine;">
-					<div class="col-md-2">
-
-					</div>
-					<div id="printPrices" class="col-md-6 d-flex">
-						<div class="col-md-4 d-flex justify-content-end">
-							<span>27347</span><span>&nbsp;SEK</span>
-						</div>
-						<div class="col-md-4 d-flex justify-content-end">
-							<span>27347</span><span>&nbsp;SEK</span>
-						</div>
-						<div class="col-md-4 d-flex justify-content-end">
-							<span>27347</span><span>&nbsp;SEK</span>
-						</div>
-					</div>
-					<div class="col-md-2">
-
-					</div>
-				</div>
-			</div>
-			<hr>
-			<div id="overview__footer">
-
-				<div class="row d-flex justify-content-center priceDiv">
-					<span>Total:&nbsp;</span><span id="totalMenuPrice">0.00</span><span>&nbsp;SEK</span>
-				</div>
-
-				<div class="row d-flex justify-content-center">
-					<button type="button" class="btn btn-primary">Print full recipe</button>
-				</div>
-			</div>
-
-		</div>
+	<div id="page-wrapper" class="">
 	</div>
 
-	<div style="height: 100%; width: 100%;">
-		<div id="siteWrapper" class="">
-			<div class=" container-fluid select-dish-container">
-				<div class="row">
-
-					<div id="sidebar" class="col-md-3">
-						<div id="sidebar__header">
-							<div>My dinner</div>
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">People</span>
-								</div>
-								<input type="text" id="numberOfGuests" class="form-control" placeholder="0" aria-label="0" aria-describedby="button-addon4">
-								<div class="input-group-append" id="button-addon4">
-									<button id="plusGuest" class="btn btn-outline-secondary addBtn" type="button">+</button>
-									<button id="minusGuest" class="btn btn-outline-secondary remBtn" type="button">-</button>
-								</div>
-							</div>
-						</div>
-						<div id="sidebar__body">
-							<div id="sidebar__body__list">
-								<ul id="dish-list" class="list-group">
-
-								</ul>
-							</div>
-							<div>
-								<p id="dinner-price" class="text-right">SEK 0.00</p>
-							</div>
-							<div class="text-center">
-								<button id="confirmBtn" type="button" class="btn btn-primary">Confirm dinner</button>
-							</div>
-						</div>
-					</div>
-
-					<div id="dishSearch" class="col-md-9">
-						<div id="dishSearch__header" class="container-fluid dishSearch__header">
-							<h4>Find a dish</h4>
-							<form id="searchForm">
-								<div class="form-row">
-									<div class="form-group col-md-5">
-										<input type="text" class="form-control" id="keyWords" placeholder="Enter key words">
-									</div>
-									<div class="form-group col-md-4">
-										<select id="dishTypeSelect" class="form-control"></select>
-									</div>
-									<div class="col-md-3">
-										<button type="submit" class="btn btn-primary">Search</button>
-									</div>
-								</div>
-							</form>
-						</div>
-
-						<div id="dishSearchBody" class="container-fluid d-flex align-content-start flex-wrap dishSearch__body">
-							<!-- Loads of dish items -->
-						</div>
-
-					</div>
-
-					<div id="dishDetails" class="col-md-9 no-float">
-
-						<div class="row">
-							<div id="description" class="col-sm-6">
-								<p id="dishName">Pizza</p>
-								<div id="detailsImg" class="dish-img">
-									<img id="detail-img" class="img-fluid" src="https://png.pngtree.com/element_origin_min_pic/16/09/16/1557db9c33ec956.jpg"
-									 alt="dish image">
-								</div>
-								<p id="description">Lorem ipsum</p>
-								<button type="button" class="btn btn-primary">Back to search</button>
-							</div>
-
-							<div class="card col-sm-5" style="margin:5px;">
-								<div class="card-body">
-									<h5 class="card-title"><span>Ingredients for </span> <span id="numberOfGuests">x</span>
-										<span> people</span></h5>
-									<table id="ingredient-table" class="table">
-										<tbody>
-											<tr id="ingredient-row0">
-											</tr>
-										</tbody>
-									</table>
-									<div id="sameRow">
-										<div>
-											<button id="addDishBtn" type="button" class="btn btn-primary">Add to menu</button>
-										</div>
-										<div>
-											<span class="text-right">SEK </span><span id="dish-price">0.00</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<!-- jQuery -->
 	<script src="https://code.jquery.com/jquery.js"></script>
