@@ -4,3 +4,7 @@ Since we want to learn the basics of interactive programming and the dynamic web
 
 ## How to run
 Open up the index.html
+
+## Project relevant internet pages
+[Collapsable divs](https://getbootstrap.com/docs/4.1/components/collapse/)  
+[Copy divs - js](https://codepen.io/s56bouya/pen/jAzdkG)
