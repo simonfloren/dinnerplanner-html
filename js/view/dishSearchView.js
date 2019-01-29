@@ -20,9 +20,9 @@ class DishSearchView {
     this.model = model;
     this.container = container;
 
-    let keyWordsAttribute = container.find('#keyWords');
-    let selectBox = container.find('#dishTypeSelect');
-    let dishContainer = container.find('#dishSearchBody');
+    this.keyWordsAttribute = container.querySelector('#keyWords');
+    this.selectBox = container.querySelector('#dishTypeSelect');
+    this.dishContainer = container.querySelector('#dishSearchBody');
 
     //console.log("Dish container", dishContainer);
   }
