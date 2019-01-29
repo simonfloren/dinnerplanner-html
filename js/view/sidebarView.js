@@ -9,7 +9,7 @@
  * @param {Object} model - the reference to the Dinner Model
  */
 class SidebarView {
-  
+
   constructor(container, model) {
     console.info("[SidebarView] Initializing..");
 
@@ -25,16 +25,10 @@ class SidebarView {
     this.totPrice = 0;
 
     //get dom elements
-    this.table        = container.find('#selected-dishes');
-    this.dishList     = document.querySelector("ul");
-    this.plusButton   = container.find('#plusGuest');
-    this.minusButton  = container.find('#minusGuest');
-
-    //attach to model
-    model.addObserver(this.update);
-
-    //render table to dom
-    render(model);
+    this.table = container.find('#selected-dishes');
+    this.dishList = document.querySelector("ul");
+    this.plusButton = container.find('#plusGuest');
+    this.minusButton = container.find('#minusGuest');
   }
 
   // Simple Observer
@@ -61,9 +55,16 @@ class SidebarView {
   update() {
     render();
   }
-  
-  removeView() {
+
+  hideView() {
+    container.setAttribute('display', 'none');
     model.removeObserver(this.update);
   }
-  
+
+  showView() {
+    container.removeAttribute('display');
+    model.addObserver(this.update);
+    render(model);
+  }
+
 }

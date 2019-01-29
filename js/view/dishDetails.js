@@ -17,10 +17,6 @@ class DishDetails {
         this.description = container.find('#description');
         this.guests = container.find('#numberOfGuests');
         this.price = container.find('#dish-price');
-
-        model.addObserver(this.update);
-
-        render(model);
     }
 
     // Simple
@@ -42,8 +38,15 @@ class DishDetails {
         render();
     }
 
-    removeView() {
+    hideView() {
+        container.setAttribute('display', 'none');
         model.removeObserver(this.update);
+    }
+
+    showView() {
+        container.removeAttribute('display');
+        model.addObserver(this.update);
+        render(model);
     }
 
 };
