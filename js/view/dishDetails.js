@@ -35,17 +35,20 @@ class DishDetails {
     }
 
     update() {
+        console.info("[dishDetails] Update");
         this.render();
     }
 
     hideView() {
+        console.info("[dishDetails] Hide");
         this.container.setAttribute('display', 'none');
-        this.model.removeObserver(this.update);
+        this.model.removeObserver(this);
     }
 
     showView() {
+        console.info("[dishDetails] Show");
         this.container.removeAttribute('display');
-        this.model.addObserver(this.update);
+        this.model.addObserver(this);
         this.render();
     }
 

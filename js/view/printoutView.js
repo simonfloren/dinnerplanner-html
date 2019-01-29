@@ -1,5 +1,5 @@
 /**
- * 
+ * Printout View
  */
 class PrintoutView {
   constructor(container, model) {
@@ -10,8 +10,6 @@ class PrintoutView {
 
     this.model = model;
     this.container = container;
-
-    let numberOfPeopleContainer = container.querySelector("#numberOfGuests");
   }
 
   render() {
@@ -25,12 +23,12 @@ class PrintoutView {
 
   hideView() {
     this.container.setAttribute('display', 'none');
-    this.model.removeObserver(this.update);
+    this.model.removeObserver(this);
   }
 
   showView() {
     this.container.removeAttribute('display');
-    this.model.addObserver(this.update);
+    this.model.addObserver(this);
     render();
   }
 }

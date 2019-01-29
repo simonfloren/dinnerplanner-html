@@ -2,92 +2,91 @@
  * DinnerModel
  * Model for the Dinner Planner app
  */
+
+let numberOfGuests = 0;
+let menu = [
+	{
+		'id': 1,
+		'name': 'French toast',
+		'type': 'starter',
+		'image': 'toast.jpg',
+		'description': "In a large mixing bowl, beat the eggs. Add the milk, brown sugar and nutmeg; stir well to combine. Soak bread slices in the egg mixture until saturated. Heat a lightly oiled griddle or frying pan over medium high heat. Brown slices on both sides, sprinkle with cinnamon and serve hot.",
+		'ingredients': [{
+			'name': 'eggs',
+			'quantity': 0.5,
+			'unit': '',
+			'price': 10
+		}, {
+			'name': 'milk',
+			'quantity': 30,
+			'unit': 'ml',
+			'price': 6
+		}, {
+			'name': 'brown sugar',
+			'quantity': 7,
+			'unit': 'g',
+			'price': 1
+		}, {
+			'name': 'ground nutmeg',
+			'quantity': 0.5,
+			'unit': 'g',
+			'price': 12
+		}, {
+			'name': 'white bread',
+			'quantity': 2,
+			'unit': 'slices',
+			'price': 2
+		}]
+	}, {
+		'id': 2,
+		'name': 'Sourdough Starter',
+		'type': 'starter',
+		'image': 'sourdough.jpg',
+		'description': "Here is how you make it... Lore ipsum...",
+		'ingredients': [{
+			'name': 'active dry yeast',
+			'quantity': 0.5,
+			'unit': 'g',
+			'price': 4
+		}, {
+			'name': 'warm water',
+			'quantity': 30,
+			'unit': 'ml',
+			'price': 0
+		}, {
+			'name': 'all-purpose flour',
+			'quantity': 15,
+			'unit': 'g',
+			'price': 2
+		}]
+	}, {
+		'id': 3,
+		'name': 'Baked Brie with Peaches',
+		'type': 'starter',
+		'image': 'bakedbrie.jpg',
+		'description': "Here is how you make it... Lore ipsum...",
+		'ingredients': [{
+			'name': 'round Brie cheese',
+			'quantity': 10,
+			'unit': 'g',
+			'price': 8
+		}, {
+			'name': 'raspberry preserves',
+			'quantity': 15,
+			'unit': 'g',
+			'price': 10
+		}, {
+			'name': 'peaches',
+			'quantity': 1,
+			'unit': '',
+			'price': 4
+		}]
+	}];
+
 class DinnerModel {
 
 	constructor(){
-		this.dishes = dishes; // to be replaced in lab 3
-		
-		// and selected dishes for the dinner menu
-		let numberOfGuests = 8;
-		let menu = [
-			{
-				'id': 1,
-				'name': 'French toast',
-				'type': 'starter',
-				'image': 'toast.jpg',
-				'description': "In a large mixing bowl, beat the eggs. Add the milk, brown sugar and nutmeg; stir well to combine. Soak bread slices in the egg mixture until saturated. Heat a lightly oiled griddle or frying pan over medium high heat. Brown slices on both sides, sprinkle with cinnamon and serve hot.",
-				'ingredients': [{
-					'name': 'eggs',
-					'quantity': 0.5,
-					'unit': '',
-					'price': 10
-				}, {
-					'name': 'milk',
-					'quantity': 30,
-					'unit': 'ml',
-					'price': 6
-				}, {
-					'name': 'brown sugar',
-					'quantity': 7,
-					'unit': 'g',
-					'price': 1
-				}, {
-					'name': 'ground nutmeg',
-					'quantity': 0.5,
-					'unit': 'g',
-					'price': 12
-				}, {
-					'name': 'white bread',
-					'quantity': 2,
-					'unit': 'slices',
-					'price': 2
-				}]
-			}, {
-				'id': 2,
-				'name': 'Sourdough Starter',
-				'type': 'starter',
-				'image': 'sourdough.jpg',
-				'description': "Here is how you make it... Lore ipsum...",
-				'ingredients': [{
-					'name': 'active dry yeast',
-					'quantity': 0.5,
-					'unit': 'g',
-					'price': 4
-				}, {
-					'name': 'warm water',
-					'quantity': 30,
-					'unit': 'ml',
-					'price': 0
-				}, {
-					'name': 'all-purpose flour',
-					'quantity': 15,
-					'unit': 'g',
-					'price': 2
-				}]
-			}, {
-				'id': 3,
-				'name': 'Baked Brie with Peaches',
-				'type': 'starter',
-				'image': 'bakedbrie.jpg',
-				'description': "Here is how you make it... Lore ipsum...",
-				'ingredients': [{
-					'name': 'round Brie cheese',
-					'quantity': 10,
-					'unit': 'g',
-					'price': 8
-				}, {
-					'name': 'raspberry preserves',
-					'quantity': 15,
-					'unit': 'g',
-					'price': 10
-				}, {
-					'name': 'peaches',
-					'quantity': 1,
-					'unit': '',
-					'price': 4
-				}]
-			}];
-		
+		this.dishes = dishesConst; // to be replaced in lab 3
 		this._observers = [];		
 	}
 
@@ -98,7 +97,7 @@ class DinnerModel {
 	 }
 	
 	notifyObservers(changeDetails) {
-		for(var i=0; i<this._observers.length; i++) {
+		for(var i = 0; i < this._observers.length; i++) {
 			this._observers[i].update(this, changeDetails);
 		}	
 	}
@@ -246,7 +245,7 @@ let types = ['Starter', 'Main dish', 'Dessert'];
 // price (a number) and unit (string defining the unit i.e. "g", "slices",
 // "ml"). Unit can sometimes be empty like in the example of eggs where
 // you just say "5 eggs" and not "5 pieces of eggs" or anything else.
-const dishes = [{
+const dishesConst = [{
 	'id': 1,
 	'name': 'French toast',
 	'type': 'starter',

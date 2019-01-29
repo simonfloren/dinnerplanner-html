@@ -11,15 +11,18 @@ class SidebarController {
 
     // TODO: change current way that number of guests are updated
   
-    view.plusButton.click(() => {
+    view.plusButton.addEventListener('click', () => {
+      console.log("plusButton pressed");
       model.setNumberOfGuests(model.getNumberOfGuests() + 1);
     });
 
-    view.minusButton.click(() => {
+    view.minusButton.addEventListener('click', () => {
+      console.log("minusButton pressed");
       model.setNumberOfGuests(model.getNumberOfGuests() - 1);
     });
 
-    view.minusButton.click(() => {
+    view.confirmButton.addEventListener('click', () => {
+      console.log("confirmButton pressed");
       // TODO: reroute to menu overview on button clicked
     });
   }

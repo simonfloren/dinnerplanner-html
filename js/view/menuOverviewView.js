@@ -12,7 +12,6 @@ class MenuOverviewView {
     this.container = container;
     this.model = model;
 
-    let numberOfPeopleContainer = container.querySelector("#numberOfGuests");
     let overViewBodyContainer = container.querySelector("#printCards");
     let priceContainer = container.querySelector("#totalPrice");
   }
@@ -39,12 +38,12 @@ class MenuOverviewView {
 
   hideView() {
     this.container.setAttribute('display', 'none');
-    this.model.removeObserver(this.update);
+    this.model.removeObserver(this);
   }
 
   showView() {
     this.container.removeAttribute('display');
-    this.model.addObserver(this.update);
+    this.model.addObserver(this);
     render();
   }
 }

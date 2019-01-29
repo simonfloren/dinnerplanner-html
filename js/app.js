@@ -1,7 +1,7 @@
 window.onload = function() {
 	//We instantiate our model
 	const model = new DinnerModel();
-
+	
 	let currentScreen = "";
 	let prevScreen = "";
 
@@ -10,7 +10,7 @@ window.onload = function() {
 
 	const dishSearch = new DishSearchView(document.querySelector("#dishSearch"), model);
 
-	const menuOverView = new MenuOverviewView(document.querySelector("#overview"), model);
+	const menuOverView = new MenuOverviewView(document.querySelector("#overview-page"), model);
 
 	const printoutView = new PrintoutView(document.querySelector("#printout-container"), model);
 

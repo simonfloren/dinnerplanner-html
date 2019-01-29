@@ -57,17 +57,20 @@ class SidebarView {
   }
 
   update() {
+    console.info("[sidebarView] Update");
     this.render();
   }
 
   hideView() {
+    console.info("[sidebarView] Hide");
     this.container.setAttribute('display', 'none');
-    this.model.removeObserver(this.update);
+    this.model.removeObserver(this);
   }
 
   showView() {
+    console.info("[sidebarView] Show");
     this.container.removeAttribute('display');
-    this.model.addObserver(this.update);
+    this.model.addObserver(this);
     render();
   }
 
