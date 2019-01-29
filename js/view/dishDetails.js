@@ -21,13 +21,6 @@ class DishDetails {
 
     // Simple
     render() {
-        // changeDetails will contain the dish id
-        // When the user is routed to this view by the controller
-        // We should try to pass the changedetails
-
-        // then we can get the description and name and prep
-        // but not image link
-
         this.guests.val(model.getNumberOfGuests());
         this.image.src = ""; // Send in data here, method to do so not implemented yet    
         this.name.html(); // Send in data here, method to do so not implemented yet  

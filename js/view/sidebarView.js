@@ -37,8 +37,9 @@ class SidebarView {
 
   // Simple Observer
   render() {
-    this.dishList.children().remove();
-    let menu = model.getFullMenu();
+    const dishes = this.dishList.firstChild;
+    this.dishList.removeChild(dishes);
+    let menu = this.model.getFullMenu();
 
     menu.forEach(dish => {
       let li = document.createElement("li");
@@ -49,11 +50,11 @@ class SidebarView {
       });
       li.textContent = dish.name + "    " + dishPrice;
       this.totPrice += dishPrice;
-      dishList.append(li);
+      this.dishList.append(li);
     });
 
-    this.dinnerPrice.html("SEK " + totPrice);
-    this.numberOfGuests.html(model.getNumberOfGuests());
+    this.dinnerPrice.textContent = "SEK " + this.totPrice;
+    this.numberOfGuests.textContent = this.model.getNumberOfGuests();
   }
 
   update() {
@@ -71,7 +72,7 @@ class SidebarView {
     console.info("[sidebarView] Show");
     this.container.removeAttribute('display');
     this.model.addObserver(this);
-    render();
+    this.render();
   }
 
 }

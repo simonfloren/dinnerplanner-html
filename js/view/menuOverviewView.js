@@ -18,18 +18,18 @@ class MenuOverviewView {
 
   render() {
     // update number of people
-    this.numberOfPeopleContainer.html(model.getNumberOfGuests());
+    this.numberOfPeopleContainer.textContent = this.model.getNumberOfGuests();
 
     // Populate the overview with main dishes, for now
     this.model.getFullMenu().forEach(data => {
       console.log("data", data);
-      let dish = new DishItem(data, model);
+      let dish = new DishItem(data, this.model);
       this.overViewBodyContainer.append(dish);
     });
 
     // populate price field
-    let price = model.getTotalMenuPrice();
-    this.priceContainer.html(price);
+    let price = this.model.getTotalMenuPrice();
+    this.priceContainer.textContent = price;
   }
 
   update() {

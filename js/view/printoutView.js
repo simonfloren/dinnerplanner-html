@@ -14,7 +14,7 @@ class PrintoutView {
 
   render() {
     // update number of people
-    this.numberOfPeopleContainer.html(model.getNumberOfGuests());
+    this.numberOfPeopleContainer.textContent = this.model.getNumberOfGuests();
   }
 
   update() {
