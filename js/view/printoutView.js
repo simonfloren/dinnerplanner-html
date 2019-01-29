@@ -2,15 +2,15 @@
  * 
  */
 class PrintoutView {
-  constructor(container, model) {
+  // constructor(container, model) {
     
-  }
-  if(typeof container === 'undefined') {
-    console.error("Undefined container");
-    return;
-  }
-  let numberOfPeopleContainer = container.find("#numberOfGuests");
+  // }
+  // if(typeof container === 'undefined') {
+  //   console.error("Undefined container");
+  //   return;
+  // }
+  // let numberOfPeopleContainer = container.find("#numberOfGuests");
 
-  // update number of people
-  numberOfPeopleContainer.html(model.getNumberOfGuests());
+  // // update number of people
+  // numberOfPeopleContainer.html(model.getNumberOfGuests());
 }

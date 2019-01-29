@@ -1,4 +1,7 @@
-//DinnerModel Object constructor
+/**
+ * DinnerModel
+ * Model for the Dinner Planner app
+ */
 class DinnerModel {
 
 	constructor(){
@@ -88,6 +91,8 @@ class DinnerModel {
 		this._observers = [];		
 	}
 
+	// Observers
+
 	addObserver(observer){
 		this._observers.push(observer);
 	 }
@@ -98,34 +103,16 @@ class DinnerModel {
 		}	
 	}
 
-	// Observers
-	/* var observers = [];
-	this.addObserver = function (observer) { observers.push(observer); }
-
-	// Remove observer, might not work TEST, != or !==?
-	this.removeObserver = function (observer) {
-		observers = observers.filter(function (observer) {
-			return this.observer !== observer;
-		});
-	}
-
-	this.notifyObservers = function (details) {
-		for (var i = 0; i < observers.length; i++)
-			observers[i](this, details);
-	} */
-
+	
 	// Model functions start here
 
 	setNumberOfGuests(num) {
 		numberOfGuests = num;
-
 		let details = {};
-
 		this.notifyObservers(details);
 	}
 
 	getNumberOfGuests() {
-		//TODO Lab 1
 		return numberOfGuests;
 	}
 

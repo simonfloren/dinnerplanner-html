@@ -25,10 +25,11 @@ class SidebarView {
     this.totPrice = 0;
 
     //get dom elements
-    this.table = container.find('#selected-dishes');
-    this.dishList = document.querySelector("ul");
-    this.plusButton = container.find('#plusGuest');
-    this.minusButton = container.find('#minusGuest');
+    this.table = document.querySelector('#selected-dishes');
+    this.dishList = document.querySelector("#dish-list");
+    this.plusButton = document.querySelector('#plusGuest');
+    this.minusButton = document.querySelector('#minusGuest');
+    console.log("lel", this.plusButton);
   }
 
   // Simple Observer
