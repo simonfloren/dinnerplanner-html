@@ -11,7 +11,7 @@
 class SidebarView {
   
   constructor(container, model) {
-    console.info("[SidebarView] Initializing..");
+    console.info("[sidebarView] Initializing..");
 
     if (typeof container === 'undefined') {
       console.error("Undefined container");
