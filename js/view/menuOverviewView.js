@@ -17,20 +17,20 @@ class MenuOverviewView {
     let priceContainer = container.find("#totalPrice");
   }
 
-  render(model) {
+  render() {
     // update number of people
-    numberOfPeopleContainer.html(model.getNumberOfGuests());
+    this.numberOfPeopleContainer.html(model.getNumberOfGuests());
 
     // Populate the overview with main dishes, for now
-    model.getFullMenu().forEach(data => {
+    this.model.getFullMenu().forEach(data => {
       console.log("data", data);
       let dish = new DishItem(data, model);
-      overViewBodyContainer.append(dish);
+      this.overViewBodyContainer.append(dish);
     });
 
     // populate price field
     let price = model.getTotalMenuPrice();
-    priceContainer.html(price);
+    this.priceContainer.html(price);
   }
 
   update() {
@@ -38,13 +38,13 @@ class MenuOverviewView {
   }
 
   hideView() {
-    container.setAttribute('display', 'none');
-    model.removeObserver(this.update);
+    this.container.setAttribute('display', 'none');
+    this.model.removeObserver(this.update);
   }
 
   showView() {
-    container.removeAttribute('display');
-    model.addObserver(this.update);
-    render(model);
+    this.container.removeAttribute('display');
+    this.model.addObserver(this.update);
+    render();
   }
 }

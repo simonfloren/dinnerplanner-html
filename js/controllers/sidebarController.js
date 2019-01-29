@@ -1,4 +1,9 @@
-// is this called from within the view or app.js/general controller?
+/**
+ *  Sidebar controller
+ * 
+ * @param view - The view the controller is controlling
+ * @param model - Model containing the dish, menu and other data
+ */
 class SidebarController {
   
   constructor(view, model) {
@@ -6,15 +11,15 @@ class SidebarController {
 
     // TODO: change current way that number of guests are updated
   
-    view.plusButton.click(function() {
+    view.plusButton.click(() => {
       model.setNumberOfGuests(model.getNumberOfGuests() + 1);
     });
 
-    view.minusButton.click(function() {
+    view.minusButton.click(() => {
       model.setNumberOfGuests(model.getNumberOfGuests() - 1);
     });
 
-    view.minusButton.click(function() {
+    view.minusButton.click(() => {
       // TODO: reroute to menu overview on button clicked
     });
   }

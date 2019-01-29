@@ -25,32 +25,35 @@ class SidebarView {
     this.totPrice = 0;
 
     //get dom elements
+
     this.table = document.querySelector('#selected-dishes');
     this.dishList = document.querySelector("#dish-list");
     this.plusButton = document.querySelector('#plusGuest');
     this.minusButton = document.querySelector('#minusGuest');
-    console.log("lel", this.plusButton);
+    this.confirmButton = document.querySelector('#confirmBtn');
+    this.numberOfGuests = document.querySelector('#numberOfGuests');
+    this.dinnerPrice = document.querySelector('#dinner-price');
   }
 
   // Simple Observer
-  render(model, changeDetails) {
+  render() {
     this.dishList.children().remove();
-    menu = model.getFullMenu();
+    let menu = model.getFullMenu();
 
     menu.forEach(dish => {
-      var li = document.createElement("li");
+      let li = document.createElement("li");
       li.className = "list-group-item";
-      var dishPrice = 0;
+      let dishPrice = 0;
       dish.ingredients.forEach(ingredient => {
         dishPrice += ingredient.price;
       });
       li.textContent = dish.name + "    " + dishPrice;
-      totPrice += dishPrice;
+      this.totPrice += dishPrice;
       dishList.append(li);
     });
 
-    $dinnerPrice.html("SEK " + totPrice);
-    $numberOfGuests.html(model.getNumberOfGuests());
+    this.dinnerPrice.html("SEK " + totPrice);
+    this.numberOfGuests.html(model.getNumberOfGuests());
   }
 
   update() {
@@ -58,14 +61,14 @@ class SidebarView {
   }
 
   hideView() {
-    container.setAttribute('display', 'none');
-    model.removeObserver(this.update);
+    this.container.setAttribute('display', 'none');
+    this.model.removeObserver(this.update);
   }
 
   showView() {
-    container.removeAttribute('display');
-    model.addObserver(this.update);
-    render(model);
+    this.container.removeAttribute('display');
+    this.model.addObserver(this.update);
+    render();
   }
 
 }
