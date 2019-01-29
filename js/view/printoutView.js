@@ -11,7 +11,7 @@ class PrintoutView {
     this.model = model;
     this.container = container;
 
-    let numberOfPeopleContainer = container.find("#numberOfGuests");
+    let numberOfPeopleContainer = container.querySelector("#numberOfGuests");
   }
 
   render() {

@@ -12,9 +12,9 @@ class MenuOverviewView {
     this.container = container;
     this.model = model;
 
-    let numberOfPeopleContainer = container.find("#numberOfGuests");
-    let overViewBodyContainer = container.find("#printCards");
-    let priceContainer = container.find("#totalPrice");
+    let numberOfPeopleContainer = container.querySelector("#numberOfGuests");
+    let overViewBodyContainer = container.querySelector("#printCards");
+    let priceContainer = container.querySelector("#totalPrice");
   }
 
   render() {

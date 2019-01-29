@@ -12,11 +12,11 @@ class DishDetails {
         this.container = container;
 
         //get dom elements
-        this.image = container.find('#detail-img');
-        this.name = container.find('#dishName');
-        this.description = container.find('#description');
-        this.guests = container.find('#numberOfGuests');
-        this.price = container.find('#dish-price');
+        this.image = container.querySelector('#detail-img');
+        this.name = container.querySelector('#dishName');
+        this.description = container.querySelector('#description');
+        this.guests = container.querySelector('#numberOfGuests');
+        this.price = container.querySelector('#dish-price');
     }
 
     // Simple
