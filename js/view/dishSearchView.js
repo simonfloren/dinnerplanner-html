@@ -17,6 +17,9 @@ class DishSearchView {
       return;
     }
 
+    this.model = model;
+    this.container = container;
+
     let keyWordsAttribute = container.find('#keyWords');
     let selectBox = container.find('#dishTypeSelect');
     let dishContainer = container.find('#dishSearchBody');
@@ -24,24 +27,24 @@ class DishSearchView {
     //console.log("Dish container", dishContainer);
   }
 
-  render(model) {
+  render() {
     const dishTypes = model.getDishTypes();
     this.selectBox.children().remove();
     dishTypes.forEach((type, index) => {
       selectBox
-      .append(document.createElement("<option></option>")
-        .attr("value", index)
-        .text(type)
-      );
+        .append(document.createElement("<option></option>")
+          .attr("value", index)
+          .text(type)
+        );
     });
 
     // Might not be needed, we're building a form
     var keyWords = keyWordsAttribute.val().split();
     console.log("New set of keywords", keyWords);
 
-    model.getAllDishes('main dish').forEach(data => {
+    this.model.getAllDishes('main dish').forEach(data => {
       console.log("data", data);
-      let newDish = new DishItem(data, model);
+      let newDish = new DishItem(data, this.model);
       this.dishContainer.append(newDish);
     });
   }
@@ -49,16 +52,16 @@ class DishSearchView {
   update() {
     render();
   }
-  
+
   hideView() {
-    container.setAttribute('display', 'none');
-    model.removeObserver(this.update);
+    this.container.setAttribute('display', 'none');
+    this.model.removeObserver(this.update);
   }
 
   showView() {
-    container.removeAttribute('display');
-    model.addObserver(this.update);
+    this.container.removeAttribute('display');
+    this.model.addObserver(this.update);
     //render table to dom
-    render(model);
-}
+    render();
+  }
 };

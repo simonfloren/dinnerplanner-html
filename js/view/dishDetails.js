@@ -20,7 +20,7 @@ class DishDetails {
     }
 
     // Simple
-    render(model, changeDetails) {
+    render() {
         // changeDetails will contain the dish id
         // When the user is routed to this view by the controller
         // We should try to pass the changedetails
@@ -28,25 +28,25 @@ class DishDetails {
         // then we can get the description and name and prep
         // but not image link
 
-        guests.val(model.getNumberOfGuests());
-        image.src = ""; // Send in data here, method to do so not implemented yet    
-        name.html(); // Send in data here, method to do so not implemented yet  
-        description.html(); // Send in data here, method to do so not implemented yet
+        this.guests.val(model.getNumberOfGuests());
+        this.image.src = ""; // Send in data here, method to do so not implemented yet    
+        this.name.html(); // Send in data here, method to do so not implemented yet  
+        this.description.html(); // Send in data here, method to do so not implemented yet
     }
 
     update() {
-        render();
+        this.render();
     }
 
     hideView() {
-        container.setAttribute('display', 'none');
-        model.removeObserver(this.update);
+        this.container.setAttribute('display', 'none');
+        this.model.removeObserver(this.update);
     }
 
     showView() {
-        container.removeAttribute('display');
-        model.addObserver(this.update);
-        render(model);
+        this.container.removeAttribute('display');
+        this.model.addObserver(this.update);
+        this.render();
     }
 
 };
