@@ -107,8 +107,8 @@ class DinnerModel {
 
 	setNumberOfGuests(num) {
 		numberOfGuests = num;
-		let details = {};
-		this.notifyObservers(details);
+		
+		this.notifyObservers();
 	}
 
 	getNumberOfGuests() {
@@ -152,7 +152,7 @@ class DinnerModel {
 			totalPrice += ingredient.price;
 		});
 
-		notifyObservers(details);
+		this.notifyObservers();
 	}
 
 	// FEL
@@ -205,7 +205,7 @@ class DinnerModel {
 
 		totalPrice += this.getDishPrice(newDish);
 
-		notifyObservers(details);
+		this.notifyObservers();
 	}
 
 	/** function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
