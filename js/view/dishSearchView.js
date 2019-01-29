@@ -26,6 +26,8 @@ class DishSearchView {
         let keyWordsList = e.target.value.split(' ');
         console.log("New set of keywords", keyWordsList);
       });
+    
+    this.searchBtn = container.querySelector('#searchBtn');
 
     this.selectBox = container.querySelector('#dishTypeSelect');
     this.dishContainer = container.querySelector('#dishSearchBody');
