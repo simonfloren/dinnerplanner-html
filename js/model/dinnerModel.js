@@ -2,9 +2,8 @@
 class DinnerModel {
 
 	constructor(){
-		this.dishes=dishesConst; // to be replaced in lab 3
+		this.dishes = dishes; // to be replaced in lab 3
 		
-		//TODO Lab 1 implement the data structure that will hold number of guest
 		// and selected dishes for the dinner menu
 		let numberOfGuests = 8;
 		let menu = [

@@ -33,7 +33,7 @@ class SidebarView {
 
   // Simple Observer
   render(model, changeDetails) {
-    dishList.children().remove();
+    this.dishList.children().remove();
     menu = model.getFullMenu();
 
     menu.forEach(dish => {
@@ -53,7 +53,7 @@ class SidebarView {
   }
 
   update() {
-    render();
+    this.render();
   }
 
   hideView() {
