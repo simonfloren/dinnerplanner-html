@@ -1,6 +1,6 @@
-class DishItemController {
+class SecondHeaderController {
 
     constructor(view, model) {
-        
+
     }
 }

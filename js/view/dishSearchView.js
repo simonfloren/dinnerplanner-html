@@ -23,6 +23,7 @@ class DishSearchView {
     this.keyWordsAttribute = container.querySelector('#keyWords');
     this.selectBox = container.querySelector('#dishTypeSelect');
     this.dishContainer = container.querySelector('#dishSearchBody');
+    this.searchBtn = container.querySelector('#searchBtn');
 
     //console.log("Dish container", dishContainer);
   }

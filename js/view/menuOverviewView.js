@@ -14,6 +14,7 @@ class MenuOverviewView {
 
     this.overViewBodyContainer = container.querySelector("#printCards");
     this.priceContainer = container.querySelector("#totalPrice");
+    this.printBtn = container.querySelector('#printBtn');
   }
 
   render() {
