@@ -8,8 +8,6 @@ class SidebarController {
   
   constructor(view, model) {
     console.info("[sidebarController] Initializing..");
-
-    // TODO: change current way that number of guests are updated
   
     view.plusButton.addEventListener('click', () => {
       console.log("plusButton pressed");
@@ -18,7 +16,9 @@ class SidebarController {
 
     view.minusButton.addEventListener('click', () => {
       console.log("minusButton pressed");
-      model.setNumberOfGuests(model.getNumberOfGuests() - 1);
+      if(model.getNumberOfGuests() >= 0) {
+        model.setNumberOfGuests(model.getNumberOfGuests() - 1);
+      }
     });
 
     view.confirmButton.addEventListener('click', () => {
