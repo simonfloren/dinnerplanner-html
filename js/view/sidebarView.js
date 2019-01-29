@@ -26,7 +26,7 @@ class SidebarView {
 
     //get dom elements
     this.table        = container.find('#selected-dishes');
-    this.dishList     = document.querySelector("ul");
+    this.dishList     = container.find("#dish-list");
     this.plusButton   = container.find('#plusGuest');
     this.minusButton  = container.find('#minusGuest');
 
@@ -34,12 +34,12 @@ class SidebarView {
     model.addObserver(this.update);
 
     //render table to dom
-    render(model);
+    this.render(model);
   }
 
   // Simple Observer
   render(model, changeDetails) {
-    dishList.children().remove();
+    this.dishList.children().remove();
     menu = model.getFullMenu();
 
     menu.forEach(dish => {
@@ -59,11 +59,11 @@ class SidebarView {
   }
 
   update() {
-    render();
+    this.render();
   }
   
   removeView() {
-    model.removeObserver(this.update);
+    this.model.removeObserver(this.update);
   }
   
 }

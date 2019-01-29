@@ -30,7 +30,7 @@ class DishSearchView {
     render(model);
   }
 
-  render = function(model) {
+  render(model) {
     const dishTypes = model.getDishTypes();
     this.selectBox.children().remove();
     dishTypes.forEach((type, index) => {
