@@ -5,7 +5,7 @@
  *  - show what dishes are selected to menu
  *  - confirms dinner
  *  
- * @param {jQuery object} container - references the HTML parent element that contains the view.
+ * @param {Node} container - references the HTML parent element that contains the view.
  * @param {Object} model - the reference to the Dinner Model
  */
 class SidebarView {
@@ -27,7 +27,7 @@ class SidebarView {
     //get dom elements
 
     this.table = document.querySelector('#selected-dishes');
-    this.dishList = document.querySelector("#dish-list");
+    this.dishList = document.querySelector("#sidebar__body__list");
     this.plusButton = document.querySelector('#plusGuest');
     this.minusButton = document.querySelector('#minusGuest');
     this.confirmButton = document.querySelector('#confirmBtn');
@@ -37,20 +37,19 @@ class SidebarView {
 
   // Simple Observer
   render() {
-    const dishes = this.dishList.firstChild;
-    this.dishList.removeChild(dishes);
+    console.info("[sidebarView] Render");
+
     let menu = this.model.getFullMenu();
+    const template = this.dishList.childNodes[1];
 
     menu.forEach(dish => {
-      let li = document.createElement("li");
-      li.className = "list-group-item";
-      let dishPrice = 0;
-      dish.ingredients.forEach(ingredient => {
-        dishPrice += ingredient.price;
-      });
-      li.textContent = dish.name + "    " + dishPrice;
+      let dishDiv = template.cloneNode(true);
+      let dishPrice = this.model.getDishPrice(dish);
       this.totPrice += dishPrice;
-      this.dishList.append(li);
+
+      dishDiv.querySelector('#dish-name').textContent = dish.name;
+      dishDiv.querySelector('#dish-price').textContent = dishPrice;
+      this.dishList.append(dishDiv);
     });
 
     this.dinnerPrice.textContent = "SEK " + this.totPrice;

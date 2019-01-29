@@ -146,34 +146,33 @@ class DinnerModel {
 	}
 
 	/** Forces update of total menu price */
-	updateMenuPrice() {
-		totalPrice = 0;
+	/* updateMenuPrice() {
+		let totalPrice = 0;
 		this.getAllIngredients().forEach(ingredient => {
 			totalPrice += ingredient.price;
 		});
 
 		this.notifyObservers();
-	}
+	} */
 
 	// FEL
 	/** Returns the total price of the menu (all the ingredients multiplied by number of guests). */
 	getTotalMenuPrice() {
-		//TODO Lab 1
 		let totalPrice = 0;
 		menu.forEach(dish => {
-			totalPrice += getDishPrice(dish);
+			totalPrice += getDishPrice(dish) * numberOfGuests;
 		});
-		return ;
+		return totalPrice;
 	}
 
-	/** Takes a dish and return the total price based on the ingredients */
+	/** Takes a dish and return the total price based on the ingredients, helper function for getTotalMenuPrice */
 	getDishPrice(dish) {
 		const ingredients = dish.ingredients;
 		let price = 0;
 		ingredients.forEach(currentIngredient => {
 			price += currentIngredient.price;
 		});
-		return price * numberOfGuests;
+		return price;
 	}
 
 	/** function that returns a dish of specific ID */
@@ -199,11 +198,8 @@ class DinnerModel {
 		let prevDish = this.getSelectedDish(newDish.type);
 		if (typeof prevDish !== 'undefined') {
 			this.removeDishFromMenu(prevDish.id);
-			totalPrice -= this.getDishPrice(prevDish);
 		}
 		menu.push(newDish);
-
-		totalPrice += this.getDishPrice(newDish);
 
 		this.notifyObservers();
 	}
@@ -213,7 +209,7 @@ class DinnerModel {
 	 * if you don't pass any filter all the dishes will be returned
 	 */
 	getAllDishes(type, filter) {
-		return dishes.filter(function (dish) {
+		return this.dishes.filter(function (dish) {
 			let found = true;
 			if (filter) {
 				found = false;

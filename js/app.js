@@ -1,14 +1,17 @@
 window.onload = function() {
 	//We instantiate our model
 	const model = new DinnerModel();
-	
+
 	let currentScreen = "";
 	let prevScreen = "";
 
 	const sidebarView = new SidebarView(document.querySelector("#sidebar"), model);
 	const sidebarController = new SidebarController(sidebarView, model);
 
+	sidebarView.showView();
+
 	const dishSearch = new DishSearchView(document.querySelector("#dishSearch"), model);
+	// dishSearch.showView();
 
 	const menuOverView = new MenuOverviewView(document.querySelector("#overview-page"), model);
 

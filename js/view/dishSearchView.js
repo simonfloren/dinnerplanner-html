@@ -4,7 +4,7 @@
  *  - displays food based on search criterias
  *  - updates the model if something was chosen
  * 
- * @param {jQuery object} container - references the HTML parent element that contains the view.
+ * @param {Node} container - references the HTML parent element that contains the view.
  * @param {Object} model - the reference to the Dinner Model
  */
 class DishSearchView {
@@ -17,51 +17,54 @@ class DishSearchView {
       return;
     }
 
-    this.model = model;
     this.container = container;
+    this.model = model;
 
-    let keyWordsAttribute = container.find('#keyWords');
-    let selectBox = container.find('#dishTypeSelect');
-    let dishContainer = container.find('#dishSearchBody');
+    this.keyWords = container.querySelector('#keyWords')
+      .addEventListener('change', (e) => {
+        e.preventDefault();
+        let keyWordsList = e.target.value.split(' ');
+        console.log("New set of keywords", keyWordsList);
+      });
 
-    //console.log("Dish container", dishContainer);
+    this.selectBox = container.querySelector('#dishTypeSelect');
+    this.dishContainer = container.querySelector('#dishSearchBody');
+    
+    // Remove default select box item
+    this.selectBox = container.querySelector('#dishTypeSelect');
+    const newSelectBox = this.selectBox.cloneNode(false);
+    this.selectBox.parentNode.replaceChild(newSelectBox, this.selectBox);
+    this.selectBox = newSelectBox;
   }
 
-  render() {
-    const dishTypes = model.getDishTypes();
-    this.selectBox.children().remove();
+  render(model) {
+    let dishTypes = model.getDishTypes();
+
     dishTypes.forEach((type, index) => {
-      selectBox
-        .append(document.createElement("<option></option>")
-          .attr("value", index)
-          .text(type)
-        );
+      const option = new Option(type, index);
+      this.selectBox.appendChild(option);
     });
 
-    // Might not be needed, we're building a form
-    var keyWords = keyWordsAttribute.val().split();
-    console.log("New set of keywords", keyWords);
-
-    this.model.getAllDishes('main dish').forEach(data => {
+    model.getAllDishes('main dish').forEach(data => {
       console.log("data", data);
-      let newDish = new DishItem(data, this.model);
+      let newDish = new DishItem(data, model);
       this.dishContainer.append(newDish);
     });
   }
 
   update() {
-    render();
+    this.render();
   }
 
   hideView() {
     this.container.setAttribute('display', 'none');
-    this.model.removeObserver(this.update);
+    this.model.removeObserver(this);
   }
 
   showView() {
     this.container.removeAttribute('display');
-    this.model.addObserver(this.update);
+    this.model.addObserver(this);
     //render table to dom
-    render();
+    this.render(this.model);
   }
 };
