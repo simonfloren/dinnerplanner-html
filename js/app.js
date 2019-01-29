@@ -5,16 +5,18 @@ window.onload = function() {
 	let currentScreen = "";
 	let prevScreen = "";
 
-	const sidebarView = new SidebarView($("#sidebar"), model);
+	const exampleView = new ExampleView(document.querySelector("#exampleView"));
+
+	const sidebarView = new SidebarView(document.querySelector("#sidebar"));
 	const sidebarController = new SidebarController(sidebarView, model);
 
-	const dishSearch = new DishSearchView($('#dishSearch'), model);
+	const dishSearch = new DishSearchView(document.querySelector("#dishSearch"));
 
-	const menuOverView = new MenuOverviewView($('#overview'), model);
+	const menuOverView = new MenuOverviewView(document.querySelector("#overview"));
 
-	const printoutView = new PrintoutView($('#printout-container'), model);
+	const printoutView = new PrintoutView(document.querySelector("#printout-container"));
 
-	const dishDetails = new DishDetails($(''), model)
+	const dishDetails = new DishDetails(document.querySelector("#dishDetails"));
 
 
 	const changeState = () => {
