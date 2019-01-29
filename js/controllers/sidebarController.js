@@ -1,17 +1,18 @@
-// is this called from within the view or app.js/general controller?
-let SidebarController = function (view, model) {
-  console.info("[sidebarController] Initializing..");
+class SidebarController {
 
-  // TODO: change current way that number of guests are updated
-  view.plusButton.click(function() {
-    model.setNumberOfGuests(model.getNumberOfGuests() + 1);
-  });
+  constructor(view, model, gsc) {
+    console.info("[sidebarController] Initializing..");
 
-  view.minusButton.click(function() {
-    model.setNumberOfGuests(model.getNumberOfGuests() - 1);
-  });
+    // TODO: change current way that number of guests are updated
+    view.plusButton.addEventListener("click", () => {
+      model.setNumberOfGuests(model.getNumberOfGuests() + 1)
+    });
+    view.minusButton.addEventListener("click", () => {
+      model.setNumberOfGuests(model.getNumberOfGuests() - 1)
+    });
 
-  view.confirmBtn.click(function() {
-    // TODO: reroute to menu overview on button clicked
-  });
+    view.confirmBtn.addEventListener("click", () => {
+      // TODO: reroute to menu overview on button clicked
+    });
+  }
 }
