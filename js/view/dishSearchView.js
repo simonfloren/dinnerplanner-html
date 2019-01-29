@@ -22,12 +22,6 @@ class DishSearchView {
     let dishContainer = container.find('#dishSearchBody');
 
     //console.log("Dish container", dishContainer);
-    
-    //attach to model
-    model.addObserver(this.update);
-
-    //render table to dom
-    render(model);
   }
 
   render(model) {
@@ -56,7 +50,15 @@ class DishSearchView {
     render();
   }
   
-  removeView() {
+  hideView() {
+    container.setAttribute('display', 'none');
     model.removeObserver(this.update);
   }
+
+  showView() {
+    container.removeAttribute('display');
+    model.addObserver(this.update);
+    //render table to dom
+    render(model);
+}
 };
