@@ -17,14 +17,28 @@ class DishDetails {
         this.description = container.querySelector('#description');
         this.guests = container.querySelector('#numberOfGuests');
         this.price = container.querySelector('#dish-price');
+        this.table = container.querySelector('#ingredient-table');
     }
 
     // Simple
-    render() {
-        this.guests.val(model.getNumberOfGuests());
-        this.image.src = ""; // Send in data here, method to do so not implemented yet    
-        this.name.html(); // Send in data here, method to do so not implemented yet  
-        this.description.html(); // Send in data here, method to do so not implemented yet
+    render(id) {
+        // Get data
+        let totGuests = this.model.getNumberOfGuests();
+        let dish = this.model.getDish(id);
+
+        // Render details
+        this.image.src = "images/" + dish.image; // Send in data here, method to do so not implemented yet    
+        this.name.textContent = dish.name; // Send in data here, method to do so not implemented yet  
+        this.description.textContent = dish.description; // Send in data here, method to do so not implemented yet
+
+        // Render ingredients
+        this.guests.textContent = totGuests;
+        let price = this.model.getDishPrice(dish) * totGuests;
+        let ing = dish.ingredients;
+        let copy = 
+        ing.forEach(ingredient => {
+            
+        });
     }
 
     update() {
@@ -38,11 +52,11 @@ class DishDetails {
         this.model.removeObserver(this);
     }
 
-    showView() {
+    showView(id) {
         console.info("[dishDetails] Show");
         this.container.removeAttribute('display');
         this.model.addObserver(this);
-        this.render();
+        this.render(id);
     }
 
 };

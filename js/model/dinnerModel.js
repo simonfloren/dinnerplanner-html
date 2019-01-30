@@ -3,7 +3,7 @@
  * Model for the Dinner Planner app
  */
 
-let numberOfGuests = 0;
+let numberOfGuests = 1;
 let menu = [
 	{
 		'id': 1,
@@ -177,9 +177,10 @@ class DinnerModel {
 
 	/** function that returns a dish of specific ID */
 	getDish(id) {
-		for (key in dishes) {
-			if (dishes[key].id == id) {
-				return dishes[key];
+		for (let key of this.dishes) {
+			if (key.id == id) {
+				console.log("yeet");
+				return key;
 			}
 		}
 	}

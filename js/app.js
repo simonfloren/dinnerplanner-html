@@ -5,8 +5,10 @@ window.onload = function() {
 	let currentScreen = "";
 	let prevScreen = "";
 
+	let selectedDish = 0;
+
 	const sidebarView = new SidebarView(document.querySelector("#sidebar"), model);
-	const sidebarController = new SidebarController(sidebarView, model);
+	const sidebarController = new SidebarController(sidebarView, model, this);
 
 	sidebarView.showView();
 
@@ -18,6 +20,7 @@ window.onload = function() {
 	const printoutView = new PrintoutView(document.querySelector("#printout-container"), model);
 
 	const dishDetails = new DishDetails(document.querySelector("#dishDetails"), model);
+	dishDetails.showView(1);
 
 	const changeState = () => {
 		// Tear down 
