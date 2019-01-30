@@ -4,6 +4,8 @@
  *  - add and remove guests
  *  - show what dishes are selected to menu
  *  - confirms dinner
+ * 
+ * Author: Albin Winkelmann, Simon TranFloren
  *  
  * @param {Node} container - references the HTML parent element that contains the view.
  * @param {Object} model - the reference to the Dinner Model

@@ -1,9 +1,10 @@
 /** A dish item card
  * 
  * Renders the card for a single dish item
+ * Author: Albin Winkelmann
  * 
  * @param {Node}    container - the container in which the card will be placed
- * @param {Object}  data - the dish data
+ * @param {Object}  dish - the dish data
  */
  class DishItemCardView {
     constructor(container, dish) {

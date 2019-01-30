@@ -1,3 +1,6 @@
+/**
+ * Author: Simon TranFloren
+ */
 class menuOverviewController {
 
     // gsc will be changed later to callback

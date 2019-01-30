@@ -1,6 +1,8 @@
 /**
  * DinnerModel
  * Model for the Dinner Planner app
+ * 
+ * Author: Albin Winkelmann, Simon TranFloren
  */
 
 let numberOfGuests = 1;

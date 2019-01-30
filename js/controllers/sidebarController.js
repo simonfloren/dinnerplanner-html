@@ -1,8 +1,9 @@
 /**
  *  Sidebar controller
+ *  Author: Simon TranFloren
  * 
- * @param view - The view the controller is controlling
- * @param model - Model containing the dish, menu and other data
+ *  @param view - The view the controller is controlling
+ *  @param model - Model containing the dish, menu and other data
  */
 class SidebarController {
   

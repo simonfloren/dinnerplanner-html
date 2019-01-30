@@ -1,5 +1,6 @@
 /**
  * Printout View
+ * Author: Simon TranFloren
  */
 class PrintoutView {
   constructor(container, model) {
