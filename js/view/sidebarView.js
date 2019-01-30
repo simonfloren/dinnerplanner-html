@@ -24,9 +24,6 @@ class SidebarView {
     this.model = model;
     this.container = container;
 
-    // Variables
-    this.totPrice = 0;
-
     // Get dom elements
     this.table = document.querySelector('#selected-dishes');
     this.dishList = document.querySelector("#sidebar__body__list");
@@ -52,17 +49,18 @@ class SidebarView {
 
     const template = this.template;
 
+    let totPrice = 0;
     menu.forEach(dish => {
       let dishDiv = template.cloneNode(true);
       let dishPrice = this.model.getDishPrice(dish);
-      this.totPrice += dishPrice;
+      totPrice += dishPrice * guests;
 
       dishDiv.querySelector('#dish-name').textContent = dish.name;
       dishDiv.querySelector('#dish-price').textContent = "SEK " + (dishPrice * guests);
       this.dishList.append(dishDiv);
     });
 
-    this.dinnerPrice.textContent = "SEK " + this.totPrice;
+    this.dinnerPrice.textContent = "SEK " + totPrice;
     this.numberOfGuests.value = guests;
   }
 

@@ -28,6 +28,7 @@ window.onload = function() {
 	const printoutView = new PrintoutView(document.querySelector("#printout-page"), model);
 
 	const dishDetails = new DishDetails(document.querySelector("#dishDetails"), model);
+	const dishDetailsController = new DishDetailsController(dishDetails, model, this);
 	
 	const secondHeader = new SecondHeaderView(document.querySelector('#dinner-header'), model);
 	const secondHeaderController = new SecondHeaderController(secondHeader, this);

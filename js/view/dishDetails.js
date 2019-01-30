@@ -12,6 +12,8 @@ class DishDetails {
         this.container = container;
 
         //get dom elements
+        this.backBtn = container.querySelector('#backSearchBtn');
+        this.addBtn = container.querySelector('#addDishBtn');
         this.image = container.querySelector('#detail-img');
         this.name = container.querySelector('#dishName');
         this.description = container.querySelector('#description');
@@ -20,14 +22,13 @@ class DishDetails {
         this.table = container.querySelector('#ingredient-table');
         this.template = container.querySelector('#ingredient-row-template').cloneNode(true);
 
-        const clonedTable = this.table.cloneNode(false);
-        // Remove template with empty cloned table
-        this.table.parentNode.replaceChild(clonedTable, this.table);
-        this.table = clonedTable;
+        //this.emptyTable = this.table.cloneNode(false);
     }
 
     // Simple
     render(id) {
+        let newTable = this.table.cloneNode(false);
+
         console.log("[dishDetails] Rendering dish:", id);
         // Get data
         let totGuests = this.model.getNumberOfGuests();
@@ -38,6 +39,7 @@ class DishDetails {
         this.image.src = "images/" + dish.image; // Send in data here, method to do so not implemented yet    
         this.name.textContent = dish.name; // Send in data here, method to do so not implemented yet  
         this.description.textContent = dish.description; // Send in data here, method to do so not implemented yet
+        this.addBtn.value = id;
 
         // Render ingredients card
         this.guests.textContent = totGuests;
@@ -47,9 +49,13 @@ class DishDetails {
             clone.querySelector('#ingredient-unit').textContent = (ingredient.quantity * totGuests) + ' ' + ingredient.unit;
             clone.querySelector('#ingredient-name').textContent = ingredient.name;
             clone.querySelector('#ingredient-price').textContent  = ingredient.price * totGuests;
-            this.table.appendChild(clone);
+            newTable.appendChild(clone);
         });
         this.price.textContent = totPrice;
+
+        // Remove template with cloned table
+        this.table.parentNode.replaceChild(newTable, this.table);
+        this.table = newTable;
     }
 
     update() {
