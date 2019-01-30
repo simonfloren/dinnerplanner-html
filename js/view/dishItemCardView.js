@@ -1,6 +1,7 @@
 /** A dish item card
  * 
  * Renders the card for a single dish item
+ * Author: Albin Winkelmann
  * 
  * @param {Node}    container - the container in which the card will be placed
  * @param {Object}  dish - the dish data

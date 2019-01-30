@@ -1,3 +1,6 @@
+/**
+ * Author: Simon TranFloren
+ */
 class SecondHeaderView {
 
     constructor(container, model) {

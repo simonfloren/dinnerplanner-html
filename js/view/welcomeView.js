@@ -1,5 +1,6 @@
 /**
  * Welcome View
+ * Author: Albin Winkelmann
  *
  * @param {Node} container - references the HTML parent element that contains the view.
  */

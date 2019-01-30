@@ -1,8 +1,9 @@
 /**
- * Welcome controller
+ *  Welcome controller
+ *  Author: Albin Winkelmann
  * 
- * @param {Node} view - reference to corresponding view
- * @param {Object} stateCtrl - reference to general state controller
+ *  @param {Node} view - reference to corresponding view
+ *  @param {Object} stateCtrl - reference to general state controller
  */
 class WelcomeController {
   constructor(view, stateCtrl) {

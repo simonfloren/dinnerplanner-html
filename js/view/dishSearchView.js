@@ -4,6 +4,8 @@
  *  - displays food based on search criterias
  *  - updates the model if something was chosen
  * 
+ * Autho: Albin Winkelmann
+ * 
  * @param {Node} container - references the HTML parent element that contains the view.
  * @param {Object} model - the reference to the Dinner Model
  */

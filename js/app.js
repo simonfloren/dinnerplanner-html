@@ -1,3 +1,8 @@
+/**
+ * The heart of the Dinner planner app
+ * Author: Albin Winkelmann, Simon TranFloren
+ */
+
 window.onload = function() {
 	//We instantiate our model
 	const model = new DinnerModel();
@@ -59,7 +64,6 @@ window.onload = function() {
 				break;
 
 			case "menu-overview":
-				// run constructor
 				menuOverView.showView();
 				break;
 

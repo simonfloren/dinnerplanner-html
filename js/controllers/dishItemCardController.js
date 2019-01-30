@@ -1,5 +1,6 @@
 /**
- *  Dish item card controller
+ * Dish item card controller
+ * Author: Albin Winkelmann
  * 
  * @param {Object} view - The view the controller is controlling
  * @param {DinnerModel} model - Model containing the dish, menu and other data
