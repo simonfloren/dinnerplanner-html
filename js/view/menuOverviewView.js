@@ -16,14 +16,18 @@ class MenuOverviewView {
     this.priceContainer = container.querySelector("#totalMenuPrice");
 
     this.printBtn = container.querySelector('#printBtn');
+
+    this.cardPriceTemplate = document.querySelector('#templates').querySelector('#cardPrice').cloneNode(true);
   }
 
   render() {
     // Populate the overview with main dishes, for now
     this.model.getFullMenu().forEach(data => {
       console.log("data", data);
-      let dish = new DishItem(data, this.model);
-      this.overViewBodyContainer.append(dish);
+      let dish = new DishItemCardView(this.overViewBodyContainer, data);
+      let priceTag = this.cardPriceTemplate.cloneNode(true);
+      priceTag.querySelector('#price').textContent = this.model.getDishPrice(data) * this.model.getNumberOfGuests();
+      dish.template.appendChild(priceTag);
     });
 
     // populate price field
