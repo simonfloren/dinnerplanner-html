@@ -11,14 +11,14 @@
       console.info("Creating dish card: ", dish.name)
 
       // retrieve dish card from templates
-      const template = document
+      this.template = document
         .querySelector('#templates')
         .querySelector('#dish-card')
         .cloneNode(true);
 
-      template.querySelector('#dish-img').src = "images/" + dish.image;
-      template.querySelector('#dish-name').textContent = dish.name;
+      this.template.querySelector('#dish-img').src = "images/" + dish.image;
+      this.template.querySelector('#dish-name').textContent = dish.name;
 
-      container.appendChild(template);
+      container.appendChild(this.template);
     }
  }

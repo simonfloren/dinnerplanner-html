@@ -21,6 +21,7 @@ class DishDetails {
         this.template = container.querySelector('#ingredient-row-template').cloneNode(true);
 
         const clonedTable = this.table.cloneNode(false);
+        // Remove template with empty cloned table
         this.table.parentNode.replaceChild(clonedTable, this.table);
         this.table = clonedTable;
     }

@@ -18,6 +18,8 @@ window.onload = function() {
 	const sidebarView = new SidebarView(document.querySelector("#sidebar"), model);
 	const sidebarController = new SidebarController(sidebarView, model, this);
 
+	//sidebarView.showView();
+
 	const dishSearch = new DishSearchView(document.querySelector("#dishSearch"), model);
 	const dishSearchController = new DishSearchController(dishSearch, model, this);
 
