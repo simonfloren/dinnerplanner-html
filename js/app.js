@@ -21,6 +21,7 @@ window.onload = function() {
 	//sidebarView.showView();
 
 	const dishSearch = new DishSearchView(document.querySelector("#dishSearch"), model);
+	const dishSearchController = new DishSearchController(dishSearch, model, this);
 
 	const menuOverView = new MenuOverviewView(document.querySelector("#overview-page"), model);
 

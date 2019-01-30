@@ -22,15 +22,8 @@ class DishSearchView {
     this.container = container;
     this.model = model;
 
-    this.keyWords = container.querySelector('#keyWords')
-      .addEventListener('change', (e) => {
-        e.preventDefault();
-        let keyWordsList = e.target.value.split(' ');
-        console.log("New set of keywords", keyWordsList);
-      });
-    
+    this.keyWords = container.querySelector('#keyWords');
     this.searchBtn = container.querySelector('#searchBtn');
-
     this.selectBox = container.querySelector('#dishTypeSelect');
     this.dishContainer = container.querySelector('#dishSearchBody');
     
@@ -39,19 +32,35 @@ class DishSearchView {
     const newSelectBox = this.selectBox.cloneNode(false);
     this.selectBox.parentNode.replaceChild(newSelectBox, this.selectBox);
     this.selectBox = newSelectBox;
-  }
 
-  render() {
-    let dishTypes = this.model.getDishTypes();
-
-    dishTypes.forEach((type, index) => {
-      const option = new Option(type, index);
+    // add dishtypes to selectbox
+    this.selectBox.appendChild(new Option("All", "all"));
+    this.dishTypes = this.model.getDishTypes();
+    this.dishTypes.forEach((type, index) => {
+      const option = new Option(type, type.toLowerCase());
       this.selectBox.appendChild(option);
     });
+  }
 
-    this.model.getAllDishes('main dish').forEach(dish => {
-      const dishCard = new DishItemCardView(this.dishContainer, dish, this.model);
+  render(type, filter) {
+    // clear all dishes
+    let newDishContainer = this.dishContainer.cloneNode(false);
+    let wantedTypes = [];
+    
+    if(typeof type === 'undefined' || type === "all") {
+      wantedTypes = this.dishTypes;
+    } else {
+      wantedTypes.push(type);
+    }
+
+    wantedTypes.forEach(cType => {
+      this.model.getAllDishes(cType.toLowerCase(), filter).forEach(dish => {
+        const dishCard = new DishItemCardView(newDishContainer, dish, this.model);
+      });
     });
+
+    this.dishContainer.parentNode.replaceChild(newDishContainer, this.dishContainer);
+    this.dishContainer = newDishContainer;
   }
 
   update() {
@@ -67,6 +76,6 @@ class DishSearchView {
     this.container.removeAttribute('display');
     this.model.addObserver(this);
     //render table to dom
-    this.render(this.model);
+    this.render();
   }
 };
