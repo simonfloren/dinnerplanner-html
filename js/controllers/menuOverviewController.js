@@ -9,7 +9,7 @@ class MenuOverviewController {
 
         view.printBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            console.log("print button pressed");            
+            console.log("print button pressed");
             stateCtrl.changeState("printout");
         });
     }
