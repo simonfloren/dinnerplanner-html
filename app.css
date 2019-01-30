@@ -102,3 +102,7 @@ html, body {
   border-radius: 3px;
   margin: 3px;
 }
+
+.fixrow {
+  margin: 0px;
+}
