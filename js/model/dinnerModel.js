@@ -179,7 +179,6 @@ class DinnerModel {
 	getDish(id) {
 		for (let key of this.dishes) {
 			if (key.id == id) {
-				console.log("yeet");
 				return key;
 			}
 		}

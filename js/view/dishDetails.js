@@ -18,6 +18,11 @@ class DishDetails {
         this.guests = container.querySelector('#numberOfGuests');
         this.price = container.querySelector('#dish-price');
         this.table = container.querySelector('#ingredient-table');
+        this.template = container.querySelector('#ingredient-row-template').cloneNode(true);
+
+        const clonedTable = this.table.cloneNode(false);
+        this.table.parentNode.replaceChild(clonedTable, this.table);
+        this.table = clonedTable;
     }
 
     // Simple
@@ -25,20 +30,24 @@ class DishDetails {
         // Get data
         let totGuests = this.model.getNumberOfGuests();
         let dish = this.model.getDish(id);
+        let totPrice = this.model.getDishPrice(dish) * totGuests;
 
         // Render details
         this.image.src = "images/" + dish.image; // Send in data here, method to do so not implemented yet    
         this.name.textContent = dish.name; // Send in data here, method to do so not implemented yet  
         this.description.textContent = dish.description; // Send in data here, method to do so not implemented yet
 
-        // Render ingredients
+        // Render ingredients card
         this.guests.textContent = totGuests;
-        let price = this.model.getDishPrice(dish) * totGuests;
         let ing = dish.ingredients;
-        let copy = 
         ing.forEach(ingredient => {
-            
+            let clone = this.template.cloneNode(true);
+            clone.querySelector('#ingredient-unit').textContent = (ingredient.quantity * totGuests) + ' ' + ingredient.unit;
+            clone.querySelector('#ingredient-name').textContent = ingredient.name;
+            clone.querySelector('#ingredient-price').textContent  = ingredient.price * totGuests;
+            this.table.appendChild(clone);
         });
+        this.price.textContent = totPrice;
     }
 
     update() {
