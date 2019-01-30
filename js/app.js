@@ -47,7 +47,8 @@ window.onload = function() {
 				break;
 
 			case "search-dish":
-				// Run "destructuring"-function
+				dishSearch.hideView();
+				sidebarView.hideView();
 				break;
 
 			case "menu-overview":
@@ -56,7 +57,8 @@ window.onload = function() {
 				break;
 
 			case "dish-details":
-				// Run "destructuring"-function
+				dishDetails.hideView();
+				sidebarView.hideView();
 				break;
 
 			case "printout":
@@ -82,7 +84,6 @@ window.onload = function() {
 				break;
 
 			case "dish-details":
-				secondHeader.showView();
 				sidebarView.showView();
 				dishDetails.showView(selectedDish);
 				break;

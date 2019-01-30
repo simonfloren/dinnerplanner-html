@@ -28,6 +28,7 @@ class DishDetails {
 
     // Simple
     render(id) {
+        console.log("[dishDetails] Rendering dish:", id);
         // Get data
         let totGuests = this.model.getNumberOfGuests();
         let dish = this.model.getDish(id);

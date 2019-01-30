@@ -31,7 +31,7 @@ class SidebarController {
 
     view.confirmButton.addEventListener('click', () => {
       console.log("confirmButton pressed");
-      // TODO: reroute to menu overview on button clicked
+      stateCtrl.changeState("printout");
     });
   }
 };
