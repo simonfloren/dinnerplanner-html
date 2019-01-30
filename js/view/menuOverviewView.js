@@ -17,7 +17,7 @@ class MenuOverviewView {
 
     this.printBtn = container.querySelector('#printBtn');
 
-    this.cardPriceTemplate = document.querySelector('#templates').querySelector('#cardPrice').cloneNode(true);
+    this.template = document.querySelector('#templates').querySelector('#cardPrice').cloneNode(true);
   }
 
   render() {
@@ -25,7 +25,7 @@ class MenuOverviewView {
     this.model.getFullMenu().forEach(data => {
       console.log("data", data);
       let dish = new DishItemCardView(this.overViewBodyContainer, data);
-      let priceTag = this.cardPriceTemplate.cloneNode(true);
+      let priceTag = this.template.cloneNode(true);
       priceTag.querySelector('#price').textContent = this.model.getDishPrice(data) * this.model.getNumberOfGuests();
       dish.template.appendChild(priceTag);
     });

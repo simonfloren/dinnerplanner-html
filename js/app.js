@@ -24,7 +24,7 @@ window.onload = function() {
 
 	const menuOverView = new MenuOverviewView(document.querySelector("#overview-page"), model);
 
-	const printoutView = new PrintoutView(document.querySelector("#printout-container"), model);
+	const printoutView = new PrintoutView(document.querySelector("#printout-page"), model);
 
 	const dishDetails = new DishDetails(document.querySelector("#dishDetails"), model);
 	
