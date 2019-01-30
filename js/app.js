@@ -13,6 +13,9 @@ window.onload = function() {
 	let selectedDish = 0;
 
 	// Initialize all the views with the corresponding controllers
+	const headerView = new HeaderView(document.querySelector("#site-header"));
+	const heraderController = new HeaderController(headerView, this);
+
 	const welcomeView = new WelcomeView(document.querySelector("#welcome-page"));
 	const welcomeController = new WelcomeController(welcomeView, this);
 

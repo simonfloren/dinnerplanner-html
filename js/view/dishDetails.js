@@ -24,6 +24,7 @@ class DishDetails {
 
         //this.emptyTable = this.table.cloneNode(false);
 
+        // function variable
         this.currentDish = 0;
     }
 
