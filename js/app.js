@@ -7,7 +7,7 @@ window.onload = function() {
 	//We instantiate our model
 	const model = new DinnerModel();
 
-	let currentScreen = "printout";
+	let currentScreen = "search-dish";
 	let prevScreen = "";
 
 	let selectedDish = 0;
@@ -20,7 +20,7 @@ window.onload = function() {
 
 	//sidebarView.showView();
 
-	const dishSearch = new DishSearchView(document.querySelector("#dishSearch"), model);
+	const dishSearch = new DishSearchView(document.querySelector("#dishSearch"), model, this);
 	const dishSearchController = new DishSearchController(dishSearch, model, this);
 
 	const menuOverView = new MenuOverviewView(document.querySelector("#overview-page"), model);

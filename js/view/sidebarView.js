@@ -7,7 +7,8 @@
  * 
  * Author: Albin Winkelmann, Simon TranFloren
  *  
- * @param {Node} container - references the HTML parent element that contains the view.
+ * @param {Node} container - references the HTML parent element that contains
+ * the view.
  * @param {Object} model - the reference to the Dinner Model
  */
 class SidebarView {
@@ -26,14 +27,13 @@ class SidebarView {
     // Variables
     this.totPrice = 0;
 
-    //get dom elements
-
+    // Get dom elements
     this.table = document.querySelector('#selected-dishes');
     this.dishList = document.querySelector("#sidebar__body__list");
     this.plusButton = document.querySelector('#plusGuest');
     this.minusButton = document.querySelector('#minusGuest');
     this.confirmButton = document.querySelector('#confirmBtn');
-    this.numberOfGuests = document.querySelector('#numberOfGuests');
+    this.numberOfGuests = document.querySelector('#numberOfGuestsField');
     this.dinnerPrice = document.querySelector('#dinner-price');
 
     this.template = document.querySelector('#template');
@@ -42,7 +42,8 @@ class SidebarView {
   // Simple Observer
   render() {
     console.info("[sidebarView] Render");
-    let menu = this.model.getFullMenu();
+    const menu = this.model.getFullMenu();
+    const guests = this.model.getNumberOfGuests();
     
     // Remove previous list
     const newList = this.dishList.cloneNode(false);
@@ -57,12 +58,12 @@ class SidebarView {
       this.totPrice += dishPrice;
 
       dishDiv.querySelector('#dish-name').textContent = dish.name;
-      dishDiv.querySelector('#dish-price').textContent = "SEK " + dishPrice;
+      dishDiv.querySelector('#dish-price').textContent = "SEK " + (dishPrice * guests);
       this.dishList.append(dishDiv);
     });
 
     this.dinnerPrice.textContent = "SEK " + this.totPrice;
-    this.numberOfGuests.textContent = this.model.getNumberOfGuests();
+    this.numberOfGuests.value = guests;
   }
 
   update() {

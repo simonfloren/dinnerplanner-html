@@ -99,6 +99,7 @@ class DinnerModel {
 	 }
 	
 	notifyObservers(changeDetails) {
+		console.log("[dinnerModel] Notifying observsers");
 		for(var i = 0; i < this._observers.length; i++) {
 			this._observers[i].update(this, changeDetails);
 		}
@@ -108,8 +109,12 @@ class DinnerModel {
 	// Model functions start here
 
 	setNumberOfGuests(num) {
-		numberOfGuests = num;
-		
+		let number = parseInt(num);
+		if(number < 0) {
+			return;
+		}
+
+		numberOfGuests = number;
 		this.notifyObservers();
 	}
 
@@ -196,6 +201,7 @@ class DinnerModel {
 	/** Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	 * it is removed from the menu and the new one added. */
 	addDishToMenu(id) {
+		console.log("[dinnerModel] Added to menu, id:", id);
 		let newDish = this.getDish(id);
 		let prevDish = this.getSelectedDish(newDish.type);
 		if (typeof prevDish !== 'undefined') {

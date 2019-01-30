@@ -1,14 +1,21 @@
 /**
  *  Sidebar controller
- *  Author: Simon TranFloren
+ *  Author: Albin Winkelmann, Simon TranFloren
  * 
- *  @param view - The view the controller is controlling
- *  @param model - Model containing the dish, menu and other data
+ *  @param {Node} view - The view the controller is controlling
+ *  @param {DinnerModel} model - Model containing the dish, menu and other data
+ *  @param {Object} stateCtrl - reference to general state controller
  */
 class SidebarController {
   
-  constructor(view, model) {
+  constructor(view, model, stateCtrl) {
     console.info("[sidebarController] Initializing..");
+
+    view.numberOfGuests.addEventListener('change', (e) => {
+      let val = e.target.value;
+      console.log("Number of people set, BY KEAYBOARDDZZ", val);
+      model.setNumberOfGuests(val);
+    })
   
     view.plusButton.addEventListener('click', () => {
       console.log("plusButton pressed");
