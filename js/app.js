@@ -10,17 +10,18 @@ window.onload = function() {
 	const sidebarView = new SidebarView(document.querySelector("#sidebar"), model);
 	const sidebarController = new SidebarController(sidebarView, model, this);
 
-	sidebarView.showView();
+	//sidebarView.showView();
 
 	const dishSearch = new DishSearchView(document.querySelector("#dishSearch"), model);
 	// dishSearch.showView();
 
 	const menuOverView = new MenuOverviewView(document.querySelector("#overview-page"), model);
+	menuOverView.showView();
 
 	const printoutView = new PrintoutView(document.querySelector("#printout-container"), model);
 
 	const dishDetails = new DishDetails(document.querySelector("#dishDetails"), model);
-	dishDetails.showView(1);
+	//dishDetails.showView(1);
 
 	const changeState = () => {
 		// Tear down 

@@ -13,15 +13,12 @@ class MenuOverviewView {
     this.model = model;
 
     this.overViewBodyContainer = container.querySelector("#printCards");
-    this.priceContainer = container.querySelector("#totalPrice");
+    this.priceContainer = container.querySelector("#totalMenuPrice");
 
     this.printBtn = container.querySelector('#printBtn');
   }
 
   render() {
-    // update number of people
-    this.numberOfPeopleContainer.textContent = this.model.getNumberOfGuests();
-
     // Populate the overview with main dishes, for now
     this.model.getFullMenu().forEach(data => {
       console.log("data", data);
@@ -30,12 +27,12 @@ class MenuOverviewView {
     });
 
     // populate price field
-    let price = this.model.getTotalMenuPrice();
-    this.priceContainer.textContent = price;
+    let totPrice = this.model.getTotalMenuPrice();
+    this.priceContainer.textContent = totPrice;
   }
 
   update() {
-    render();
+    this.render();
   }
 
   hideView() {
@@ -46,6 +43,6 @@ class MenuOverviewView {
   showView() {
     this.container.removeAttribute('display');
     this.model.addObserver(this);
-    render();
+    this.render();
   }
 }

@@ -160,7 +160,7 @@ class DinnerModel {
 	getTotalMenuPrice() {
 		let totalPrice = 0;
 		menu.forEach(dish => {
-			totalPrice += getDishPrice(dish) * numberOfGuests;
+			totalPrice += this.getDishPrice(dish) * numberOfGuests;
 		});
 		return totalPrice;
 	}
