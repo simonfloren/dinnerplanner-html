@@ -7,7 +7,7 @@ window.onload = function() {
 	//We instantiate our model
 	const model = new DinnerModel();
 
-	let currentScreen = "welcome";
+	let currentScreen = "printout";
 	let prevScreen = "";
 
 	let selectedDish = 0;
@@ -27,6 +27,8 @@ window.onload = function() {
 	const printoutView = new PrintoutView(document.querySelector("#printout-container"), model);
 
 	const dishDetails = new DishDetails(document.querySelector("#dishDetails"), model);
+	
+	const secondHeader = new SecondHeaderView(document.querySelector('#dinner-header'), model);
 
 	this.changeState = (newScreen) => {
 		if(typeof newScreen !== 'undefined') {
@@ -52,6 +54,10 @@ window.onload = function() {
 			case "dish-details":
 				// Run "destructuring"-function
 				break;
+
+			case "printout":
+				// Run "destructuring"-function
+				break;
 		}
 
 		// Start relevant listeners
@@ -66,12 +72,19 @@ window.onload = function() {
 				break;
 
 			case "menu-overview":
+				secondHeader.showView();
 				menuOverView.showView();
 				break;
 
 			case "dish-details":
+				secondHeader.showView();
 				sidebarView.showView();
 				dishDetails.showView();
+				break;
+
+			case "printout":
+				secondHeader.showView();
+				printoutView.showView();
 				break;
 		}
 	};
