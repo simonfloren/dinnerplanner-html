@@ -7,7 +7,7 @@ window.onload = function() {
 	//We instantiate our model
 	const model = new DinnerModel();
 
-	let currentScreen = "search-dish";
+	let currentScreen = "dish-details";
 	let prevScreen = "";
 
 	let selectedDish = 0;
