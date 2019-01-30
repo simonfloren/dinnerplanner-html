@@ -3,11 +3,10 @@
  * Renders the card for a single dish item
  * 
  * @param {Node}    container - the container in which the card will be placed
- * @param {Object}  data - the dish data
- * @param {Object}  model - reference to Dinner Model
+ * @param {Object}  dish - the dish data
  */
  class DishItemCardView {
-    constructor(container, dish, data) {
+    constructor(container, dish) {
       console.info("Creating dish card: ", dish.name)
 
       // retrieve dish card from templates
