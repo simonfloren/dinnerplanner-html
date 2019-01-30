@@ -1,16 +1,16 @@
 /**
  * Author: Simon TranFloren
  */
-class menuOverviewController {
+class MenuOverviewController {
 
     // gsc will be changed later to callback
-    constructor(view, model, gsc) {
+    constructor(view, stateCtrl) {
         console.info("[menuOverviewController] Initializing..");
 
-        view.printBtn.addEventListener('click', () => {
-            console.log("print button pressed");
-            
-            gsc.changeState();
+        view.printBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("print button pressed");            
+            stateCtrl.changeState("printout");
         });
     }
 }

@@ -7,7 +7,7 @@ window.onload = function() {
 	//We instantiate our model
 	const model = new DinnerModel();
 
-	let currentScreen = "search-dish";
+	let currentScreen = "menu-overview";
 	let prevScreen = "";
 
 	let selectedDish = 0;
@@ -24,12 +24,14 @@ window.onload = function() {
 	const dishSearchController = new DishSearchController(dishSearch, model, this);
 
 	const menuOverView = new MenuOverviewView(document.querySelector("#overview-page"), model);
+	const menuOverviewController = new MenuOverviewController(menuOverView, this);
 
 	const printoutView = new PrintoutView(document.querySelector("#printout-page"), model);
 
 	const dishDetails = new DishDetails(document.querySelector("#dishDetails"), model);
 	
 	const secondHeader = new SecondHeaderView(document.querySelector('#dinner-header'), model);
+	const secondHeaderController = new SecondHeaderController(secondHeader, this);
 
 	this.changeState = (newScreen) => {
 		if(typeof newScreen !== 'undefined') {
@@ -50,6 +52,8 @@ window.onload = function() {
 
 			case "menu-overview":
 				// Run "destructuring"-function
+				menuOverView.hideView();
+				secondHeader.hideView();
 				break;
 
 			case "dish-details":
@@ -58,6 +62,8 @@ window.onload = function() {
 
 			case "printout":
 				// Run "destructuring"-function
+				secondHeader.hideView();
+				printoutView.hideView();
 				break;
 		}
 
