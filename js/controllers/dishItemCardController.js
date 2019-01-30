@@ -16,22 +16,16 @@ class DishItemCardController {
     // Declare variables
     this.stateCtrl = stateCtrl;
 
-
-    view.template.onclick=function(){ console.log("klasjhjasd") };
-
-    // // attach listener to dishItemCard element
-    // view.template.addEventListener('click', (e) => {
-    //   e.preventDefault();
-
-    //   const id = 0;
-    //   console.log("Dish pressed", e);
-
-    //   this.openDish(id);
-    // });
+    // attach listener to dishItemCard element
+    view.template.querySelector('#dish-img').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log("Dish pressed", view.dish.id);
+      this.openDish(view.dish.id);
+    });
   }
 
   // Go to selected dish
   openDish(id) {
-    this.stateCtrl.changeState(id);
+    this.stateCtrl.viewDish(id);
   }
 }

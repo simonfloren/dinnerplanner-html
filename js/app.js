@@ -7,18 +7,17 @@ window.onload = function() {
 	//We instantiate our model
 	const model = new DinnerModel();
 
-	let currentScreen = "menu-overview";
+	let currentScreen = "search-dish";
 	let prevScreen = "";
 
 	let selectedDish = 0;
 
+	// Initialize all the views with the corresponding controllers
 	const welcomeView = new WelcomeView(document.querySelector("#welcome-page"));
 	const welcomeController = new WelcomeController(welcomeView, this);
 
 	const sidebarView = new SidebarView(document.querySelector("#sidebar"), model);
 	const sidebarController = new SidebarController(sidebarView, model, this);
-
-	//sidebarView.showView();
 
 	const dishSearch = new DishSearchView(document.querySelector("#dishSearch"), model, this);
 	const dishSearchController = new DishSearchController(dishSearch, model, this);
@@ -33,7 +32,8 @@ window.onload = function() {
 	const secondHeader = new SecondHeaderView(document.querySelector('#dinner-header'), model);
 	const secondHeaderController = new SecondHeaderController(secondHeader, this);
 
-	this.changeState = (newScreen) => {
+	// State controller 
+	this.changeState = newScreen => {
 		if(typeof newScreen !== 'undefined') {
 			prevScreen = currentScreen;
 			currentScreen = newScreen;
@@ -51,7 +51,6 @@ window.onload = function() {
 				break;
 
 			case "menu-overview":
-				// Run "destructuring"-function
 				menuOverView.hideView();
 				secondHeader.hideView();
 				break;
@@ -61,7 +60,6 @@ window.onload = function() {
 				break;
 
 			case "printout":
-				// Run "destructuring"-function
 				secondHeader.hideView();
 				printoutView.hideView();
 				break;
@@ -86,7 +84,7 @@ window.onload = function() {
 			case "dish-details":
 				secondHeader.showView();
 				sidebarView.showView();
-				dishDetails.showView();
+				dishDetails.showView(selectedDish);
 				break;
 
 			case "printout":
@@ -95,6 +93,11 @@ window.onload = function() {
 				break;
 		}
 	};
+
+	this.viewDish = id => {
+		selectedDish = id;
+		this.changeState("dish-details");
+	}
 
 	this.changeState();
 };
