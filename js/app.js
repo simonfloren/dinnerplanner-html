@@ -5,8 +5,10 @@ window.onload = function() {
 	let currentScreen = "search-dish";
 	let prevScreen = "";
 
+	let selectedDish = 0;
+
 	const sidebarView = new SidebarView(document.querySelector("#sidebar"), model);
-	const sidebarController = new SidebarController(sidebarView, model);
+	const sidebarController = new SidebarController(sidebarView, model, this);
 
 	const dishSearch = new DishSearchView(document.querySelector("#dishSearch"), model);
 
@@ -15,6 +17,7 @@ window.onload = function() {
 	const printoutView = new PrintoutView(document.querySelector("#printout-container"), model);
 
 	const dishDetails = new DishDetails(document.querySelector("#dishDetails"), model);
+	dishDetails.showView(1);
 
 	const changeState = () => {
 		console.info("Current view:", currentScreen);
