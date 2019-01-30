@@ -24,7 +24,7 @@ class SidebarController {
 
     view.minusButton.addEventListener('click', () => {
       console.log("minusButton pressed");
-      if(model.getNumberOfGuests() >= 0) {
+      if(model.getNumberOfGuests() > 1) {
         model.setNumberOfGuests(model.getNumberOfGuests() - 1);
       }
     });
