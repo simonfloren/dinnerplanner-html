@@ -2,7 +2,7 @@ window.onload = function() {
 	//We instantiate our model
 	const model = new DinnerModel();
 
-	let currentScreen = "";
+	let currentScreen = "search-dish";
 	let prevScreen = "";
 
 	let selectedDish = 0;
@@ -10,10 +10,7 @@ window.onload = function() {
 	const sidebarView = new SidebarView(document.querySelector("#sidebar"), model);
 	const sidebarController = new SidebarController(sidebarView, model, this);
 
-	//sidebarView.showView();
-
 	const dishSearch = new DishSearchView(document.querySelector("#dishSearch"), model);
-	// dishSearch.showView();
 
 	const menuOverView = new MenuOverviewView(document.querySelector("#overview-page"), model);
 	menuOverView.showView();
@@ -24,6 +21,7 @@ window.onload = function() {
 	//dishDetails.showView(1);
 
 	const changeState = () => {
+		console.info("Current view:", currentScreen);
 		// Tear down 
 		switch(prevScreen) {
 			case "welcome":
@@ -35,6 +33,7 @@ window.onload = function() {
 				break;
 
 			case "menu-overview":
+				// Run "destructuring"-function
 				break;
 
 			case "dish-details":
@@ -49,7 +48,8 @@ window.onload = function() {
 				break;
 
 			case "search-dish":
-				// run constructor
+				dishSearch.showView();
+				sidebarView.showView();
 				break;
 
 			case "menu-overview":
@@ -65,4 +65,6 @@ window.onload = function() {
 		prevScreen = currentScreen;
 
 	};
+
+	changeState();
 };
