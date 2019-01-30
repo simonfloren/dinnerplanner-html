@@ -62,6 +62,14 @@ class SidebarView {
 
     this.dinnerPrice.textContent = "SEK " + totPrice;
     this.numberOfGuests.value = guests;
+
+    // Disable button
+    if (menu.length == 0) {
+      this.confirmButton.setAttribute('disabled', true);
+    }
+    else {
+      this.confirmButton.removeAttribute('disabled');
+    }
   }
 
   update() {
