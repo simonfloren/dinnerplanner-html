@@ -23,10 +23,14 @@ class DishDetails {
         this.template = container.querySelector('#ingredient-row-template').cloneNode(true);
 
         //this.emptyTable = this.table.cloneNode(false);
+
+        this.currentDish = 0;
     }
 
     // Simple
     render(id) {
+        this.currentDish = id;
+
         let newTable = this.table.cloneNode(false);
 
         console.log("[dishDetails] Rendering dish:", id);
@@ -60,7 +64,7 @@ class DishDetails {
 
     update() {
         console.info("[dishDetails] Update");
-        this.render();
+        this.render(this.currentDish);
     }
 
     hideView() {
