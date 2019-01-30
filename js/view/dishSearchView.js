@@ -32,25 +32,23 @@ class DishSearchView {
     this.selectBox = container.querySelector('#dishTypeSelect');
     this.dishContainer = container.querySelector('#dishSearchBody');
     
-    // Remove default select box item
+    // Remove default select-box item
     this.selectBox = container.querySelector('#dishTypeSelect');
     const newSelectBox = this.selectBox.cloneNode(false);
     this.selectBox.parentNode.replaceChild(newSelectBox, this.selectBox);
     this.selectBox = newSelectBox;
   }
 
-  render(model) {
-    let dishTypes = model.getDishTypes();
+  render() {
+    let dishTypes = this.model.getDishTypes();
 
     dishTypes.forEach((type, index) => {
       const option = new Option(type, index);
       this.selectBox.appendChild(option);
     });
 
-    model.getAllDishes('main dish').forEach(data => {
-      console.log("data", data);
-      let newDish = new DishItem(data, model);
-      this.dishContainer.append(newDish);
+    this.model.getAllDishes('main dish').forEach(dish => {
+      const dishCard = new DishItemCardView(this.dishContainer, dish, this.model);
     });
   }
 

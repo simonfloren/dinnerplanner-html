@@ -33,14 +33,21 @@ class SidebarView {
     this.confirmButton = document.querySelector('#confirmBtn');
     this.numberOfGuests = document.querySelector('#numberOfGuests');
     this.dinnerPrice = document.querySelector('#dinner-price');
+
+    this.template = document.querySelector('#template');
   }
 
   // Simple Observer
   render() {
     console.info("[sidebarView] Render");
-
     let menu = this.model.getFullMenu();
-    const template = this.dishList.childNodes[1];
+    
+    // Remove previous list
+    const newList = this.dishList.cloneNode(false);
+    this.dishList.parentNode.replaceChild(newList, this.dishList);
+    this.dishList = newList;
+
+    const template = this.template;
 
     menu.forEach(dish => {
       let dishDiv = template.cloneNode(true);
@@ -48,7 +55,7 @@ class SidebarView {
       this.totPrice += dishPrice;
 
       dishDiv.querySelector('#dish-name').textContent = dish.name;
-      dishDiv.querySelector('#dish-price').textContent = dishPrice;
+      dishDiv.querySelector('#dish-price').textContent = "SEK " + dishPrice;
       this.dishList.append(dishDiv);
     });
 
