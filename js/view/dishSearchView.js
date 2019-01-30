@@ -8,10 +8,12 @@
  * 
  * @param {Node} container - references the HTML parent element that contains the view.
  * @param {Object} model - the reference to the Dinner Model
+ * @param {Object} stateCtrl - reference to general state controller
+ * (used for the nestled dish item cards controlles)
  */
 class DishSearchView {
 
-  constructor(container, model) {
+  constructor(container, model, stateCtrl) {
     console.info("[dishSearchView] Initializing..");
 
     if (typeof container === 'undefined') {
@@ -21,6 +23,7 @@ class DishSearchView {
 
     this.container = container;
     this.model = model;
+    this.stateCtrl = stateCtrl;
 
     this.keyWords = container.querySelector('#keyWords');
     this.searchBtn = container.querySelector('#searchBtn');
@@ -56,6 +59,7 @@ class DishSearchView {
     wantedTypes.forEach(cType => {
       this.model.getAllDishes(cType.toLowerCase(), filter).forEach(dish => {
         const dishCard = new DishItemCardView(newDishContainer, dish, this.model);
+        const dishCardController = new DishItemCardController(dishCard, this.model, this.stateCtrl);
       });
     });
 

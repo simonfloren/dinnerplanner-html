@@ -8,7 +8,9 @@
  */
  class DishItemCardView {
     constructor(container, dish) {
-      console.info("Creating dish card: ", dish.name)
+      console.info("[dishItemCardView] Creating dish card: ", dish.name);
+
+      this.dish = dish;
 
       // retrieve dish card from templates
       this.template = document

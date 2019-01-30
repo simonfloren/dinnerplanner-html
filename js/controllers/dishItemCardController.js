@@ -13,22 +13,25 @@ class DishItemCardController {
     // Declare functions
     this.openDish;
 
+    // Declare variables
     this.stateCtrl = stateCtrl;
 
-    // attach listener to dishItemCard element
-    view.div.addEventListener('click', (e) => {
-      e.preventDefault();
 
-      const id = 0;
-      console.log("Dish pressed", e.target);
+    view.template.onclick=function(){ console.log("klasjhjasd") };
 
-      this.openDish(id);
-    });
+    // // attach listener to dishItemCard element
+    // view.template.addEventListener('click', (e) => {
+    //   e.preventDefault();
+
+    //   const id = 0;
+    //   console.log("Dish pressed", e);
+
+    //   this.openDish(id);
+    // });
   }
 
   // Go to selected dish
   openDish(id) {
-    this.stateCtrl.selectedDish = id;
-    this.stateCtrl.changeState();
+    this.stateCtrl.changeState(id);
   }
 }
