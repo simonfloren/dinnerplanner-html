@@ -216,7 +216,7 @@ class DinnerModel {
 			if (filter) {
 				found = false;
 				dish.ingredients.forEach(function (ingredient) {
-					if (ingredient.name.indexOf(filter) != -1) {
+					if (ingredient.name.toLowerCase().indexOf(filter) != -1) {
 						found = true;
 					}
 				});
