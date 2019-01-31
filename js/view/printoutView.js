@@ -18,6 +18,7 @@ class PrintoutView {
 
   render() {
     let menu = this.model.getFullMenu();
+    this.poBody.innerHTML = ""; // Slower than replce but easy to write
     menu.forEach(dish => {
       let row = this.template.cloneNode(true);
       row.querySelector('#dish-name').textContent = dish.name;

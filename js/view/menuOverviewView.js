@@ -22,6 +22,11 @@ class MenuOverviewView {
 
   render() {
     // Populate the overview with main dishes, for now
+    //this.overViewBodyContainer.innnerHTML = "";
+    let newOverView = this.overViewBodyContainer.cloneNode(false);
+    this.overViewBodyContainer.parentNode.replaceChild(newOverView, this.overViewBodyContainer);
+    this.overViewBodyContainer = newOverView;
+
     this.model.getFullMenu().forEach(data => {
       console.log("data", data);
       let dish = new DishItemCardView(this.overViewBodyContainer, data);

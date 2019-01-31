@@ -31,7 +31,7 @@ class SidebarController {
 
     view.confirmButton.addEventListener('click', () => {
       console.log("confirmButton pressed");
-      stateCtrl.changeState("printout");
+      stateCtrl.changeState("menu-overview");
     });
   }
 };

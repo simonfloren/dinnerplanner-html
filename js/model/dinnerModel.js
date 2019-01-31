@@ -79,18 +79,7 @@ class DinnerModel {
 		});
 		return ingredients;
 	}
-
-	/** Forces update of total menu price */
-	/* updateMenuPrice() {
-		let totalPrice = 0;
-		this.getAllIngredients().forEach(ingredient => {
-			totalPrice += ingredient.price;
-		});
-
-		this.notifyObservers();
-	} */
-
-	// FEL
+	
 	/** Returns the total price of the menu (all the ingredients multiplied by number of guests). */
 	getTotalMenuPrice() {
 		let totalPrice = 0;
