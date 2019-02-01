@@ -25,6 +25,8 @@ class DishSearchView {
     this.model = model;
     this.stateCtrl = stateCtrl;
 
+    this.isLoading = true;
+
     this.keyWords = container.querySelector('#keyWords');
     this.searchBtn = container.querySelector('#searchBtn');
     this.selectBox = container.querySelector('#dishTypeSelect');
@@ -43,28 +45,34 @@ class DishSearchView {
       const option = new Option(type, type.toLowerCase());
       this.selectBox.appendChild(option);
     });
+
   }
 
   render(type, filter) {
-    // clear all dishes
-    let newDishContainer = this.dishContainer.cloneNode(false);
-    let wantedTypes = [];
-    
-    if(typeof type === 'undefined' || type === "all") {
-      wantedTypes = this.dishTypes;
+
+    if(this.isLoading) {
+
     } else {
-      wantedTypes.push(type);
-    }
-
-    wantedTypes.forEach(cType => {
-      this.model.getAllDishes(cType.toLowerCase(), filter).forEach(dish => {
-        const dishCard = new DishItemCardView(newDishContainer, dish, this.model);
-        const dishCardController = new DishItemCardController(dishCard, this.model, this.stateCtrl);
+      // clear all dishes
+      let newDishContainer = this.dishContainer.cloneNode(false);
+      let wantedTypes = [];
+      
+      if(typeof type === 'undefined' || type === "all") {
+        wantedTypes = this.dishTypes;
+      } else {
+        wantedTypes.push(type);
+      }
+  
+      wantedTypes.forEach(cType => {
+        this.model.getAllDishes(cType.toLowerCase(), filter).forEach(dish => {
+          const dishCard = new DishItemCardView(newDishContainer, dish, this.model);
+          const dishCardController = new DishItemCardController(dishCard, this.model, this.stateCtrl);
+        });
       });
-    });
-
-    this.dishContainer.parentNode.replaceChild(newDishContainer, this.dishContainer);
-    this.dishContainer = newDishContainer;
+  
+      this.dishContainer.parentNode.replaceChild(newDishContainer, this.dishContainer);
+      this.dishContainer = newDishContainer;
+    }
   }
 
   update() {
