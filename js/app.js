@@ -98,9 +98,8 @@ window.onload = function() {
 	}
 
 	this.viewDish = id => {
-		dishDetails.updateDish(id);
 		this.changeState("dish-details");
-		dishDetails.updateDish();
+		dishDetails.updateDish(id);
 	}
 
 	this.dishSearch = (type, filter) => {

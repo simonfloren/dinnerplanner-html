@@ -33,8 +33,8 @@ class DishDetails {
     }
 
     // Simple
-    render(id) {
-        this.currentDish = id;
+    render() {
+        const id = this.dish.id;
 
         let newTable = this.table.cloneNode(false);
 
@@ -44,17 +44,19 @@ class DishDetails {
 
         if(this.isLoading) {
             this.loading.removeAttribute('display');
+            this.container.setAttribute('display', 'none');
         } else {
             this.loading.setAttribute('display', 'none');
+            this.container.removeAttribute('display');
 
-            let ing = dish.extendedIngredients;
-            let totPrice = dish.pricePerServing * totGuests;
+            let ing = this.dish.extendedIngredients;
+            let totPrice = this.dish.pricePerServing * totGuests;
             
 
             // Render details
-            this.image.src = dish.image;
-            this.name.textContent = dish.title;
-            this.description.textContent = dish.instructions;
+            this.image.src = this.dish.image;
+            this.name.textContent = this.dish.title;
+            this.description.textContent = this.dish.instructions;
             this.addBtn.value = id;
 
             // Render ingredients card
@@ -79,7 +81,7 @@ class DishDetails {
         let guests = this.model.getNumberOfGuests();
     }
 
-    updateDish() {
+    updateDish(id) {
         this.isLoading = true;
         this.render();
 
@@ -110,7 +112,7 @@ class DishDetails {
         console.info("[dishDetails] Show");
         this.container.removeAttribute('display');
         this.model.addObserver(this);
-        this.render(id);
+        //this.render(id);
     }
 
 };
