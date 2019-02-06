@@ -32,6 +32,7 @@ class DishSearchView {
     this.searchBtn = container.querySelector('#searchBtn');
     this.selectBox = container.querySelector('#dishTypeSelect');
     this.dishContainer = container.querySelector('#dishSearchBody');
+    this.loading = container.querySelector("#dishSearchLoading");
     
     // Remove default select-box item
     this.selectBox = container.querySelector('#dishTypeSelect');
@@ -63,8 +64,10 @@ class DishSearchView {
     let newDishContainer = this.dishContainer.cloneNode(false);
 
     if(this.isLoading) {
-      
+      this.loading.removeAttribute('display');
     } else {
+      this.loading.setAttribute('display', 'none');
+      
       // render each dish
       this.dishes.forEach(cDish => {
         const dishCard = new DishItemCardView(newDishContainer, cDish);
