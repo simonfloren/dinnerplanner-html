@@ -46,7 +46,7 @@ class DinnerModel {
 		}
 
 		numberOfGuests = number;
-		this.notifyObservers();
+		this.notifyObservers("guests");
 	}
 
 	getNumberOfGuests() {

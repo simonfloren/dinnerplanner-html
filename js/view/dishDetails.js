@@ -11,7 +11,11 @@ class DishDetails {
         this.model = model;
         this.container = container;
 
+        this.isLoading = true;
+        this.dish = {};
+
         //get dom elements
+        this.loading = document.querySelector("#dishDetailsLoading");
         this.backBtn = container.querySelector('#backSearchBtn');
         this.addBtn = container.querySelector('#addDishBtn');
         this.image = container.querySelector('#detail-img');
@@ -29,8 +33,8 @@ class DishDetails {
     }
 
     // Simple
-    render(id) {
-        this.currentDish = id;
+    render() {
+        const id = this.dish.id;
 
         let newTable = this.table.cloneNode(false);
 
@@ -38,48 +42,64 @@ class DishDetails {
         // Get data
         let totGuests = this.model.getNumberOfGuests();
 
-        //let totPrice = this.model.getDishPrice(dish) * totGuests;
-        let ing = [];
-        let totPrice = 0;
-        let imgSrc = "";
-        let dishName = "";
-        let description = "";
-        this.model.getDish(id).then(dish => {
-            ing = dish.extendedIngredients;
-            imgSrc = dish.image;
-            dishName = dish.title;
-            description = dish.instructions;
-            totPrice = dish.pricePerServing * totGuests;
-        }).catch(error => {
-            /* do something with the error */
-        })
+        if(this.isLoading) {
+            this.loading.removeAttribute('display');
+            this.container.setAttribute('display', 'none');
+        } else {
+            this.loading.setAttribute('display', 'none');
+            this.container.removeAttribute('display');
 
-        // Render details
-        this.image.src = imgSrc;
-        this.name.textContent = dishName;
-        this.description.textContent = description;
-        this.addBtn.value = id;
+            let ing = this.dish.extendedIngredients;
+            let totPrice = this.dish.pricePerServing * totGuests;
+            
 
-        // Render ingredients card
-        this.guests.textContent = totGuests;
-        ing.forEach(ingredient => {
-            let clone = this.template.cloneNode(true);
-            clone.querySelector('#ingredient-unit').textContent = (ingredient.amount * totGuests) + ' ' + ingredient.unit;
-            clone.querySelector('#ingredient-name').textContent = ingredient.name;
-            //clone.querySelector('#ingredient-price').textContent  = ingredient.price * totGuests;
-            clone.querySelector('#ingredient-price').textContent  = "?";
-            newTable.appendChild(clone);
-        });
-        this.price.textContent = totPrice;
+            // Render details
+            this.image.src = this.dish.image;
+            this.name.textContent = this.dish.title;
+            this.description.textContent = this.dish.instructions;
+            this.addBtn.value = id;
 
-        // Remove template with cloned table
-        this.table.parentNode.replaceChild(newTable, this.table);
-        this.table = newTable;
+            // Render ingredients card
+            this.guests.textContent = totGuests;
+            ing.forEach(ingredient => {
+                let clone = this.template.cloneNode(true);
+                clone.querySelector('#ingredient-unit').textContent = (ingredient.amount * totGuests) + ' ' + ingredient.unit;
+                clone.querySelector('#ingredient-name').textContent = ingredient.name;
+                //clone.querySelector('#ingredient-price').textContent  = ingredient.price * totGuests;
+                clone.querySelector('#ingredient-price').textContent  = "?";
+                newTable.appendChild(clone);
+            });
+            this.price.textContent = totPrice;
+
+            // Remove template with cloned table
+            this.table.parentNode.replaceChild(newTable, this.table);
+            this.table = newTable;
+        }
     }
 
-    update() {
-        console.info("[dishDetails] Update");
-        this.render(this.currentDish);
+    updateGuests() {
+        let guests = this.model.getNumberOfGuests();
+    }
+
+    updateDish(id) {
+        this.isLoading = true;
+        this.render();
+
+        this.model.getDish(id).then(dish => {
+            this.dish = dish;
+            this.isLoading = false;
+            this.render();
+        }).catch(error => {
+            /* do something with the error */
+        });
+    }
+
+    update(details) {
+        if(details === "guests") {
+            console.info("[dishDetails] Update");
+            this.updateGuests();
+        }
+        //this.render(this.currentDish);
     }
 
     hideView() {
@@ -92,7 +112,7 @@ class DishDetails {
         console.info("[dishDetails] Show");
         this.container.removeAttribute('display');
         this.model.addObserver(this);
-        this.render(id);
+        //this.render(id);
     }
 
 };
