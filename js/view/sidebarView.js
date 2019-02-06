@@ -42,6 +42,7 @@ class SidebarView {
     console.info("[sidebarView] Render");
     const menu = this.model.getFullMenu();
     const guests = this.model.getNumberOfGuests();
+    console.debug(guests);
     
     // Remove previous list
     const newList = this.dishList.cloneNode(false);
@@ -52,12 +53,11 @@ class SidebarView {
 
     let totPrice = 0;
     menu.forEach(dish => {
-      let dishDiv = template.cloneNode(true);
-      let dishPrice = this.model.getDishPrice(dish);
-      totPrice += dishPrice * guests;
+      let dishDiv = template.cloneNode(true);;
+      totPrice += dish.pricePerServing * guests;
 
       dishDiv.querySelector('#dish-name').textContent = dish.name;
-      dishDiv.querySelector('#dish-price').textContent = "SEK " + (dishPrice * guests);
+      dishDiv.querySelector('#dish-price').textContent = "SEK " + (dish.pricePerServing * guests);
       this.dishList.append(dishDiv);
     });
 
@@ -73,8 +73,8 @@ class SidebarView {
     }
   }
 
-  update(details) {
-    if(details === 'menu') {
+  update(model, details) {
+    if(details === 'menu' || details === 'guests') {
       console.info("[sidebarView] Update");
       this.render();
     }
