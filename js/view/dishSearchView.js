@@ -27,6 +27,7 @@ class DishSearchView {
 
     this.isLoading = true;
     this.dishes = [];
+    this.error = "";
 
     this.keyWords = container.querySelector('#keyWords');
     this.searchBtn = container.querySelector('#searchBtn');
@@ -55,7 +56,10 @@ class DishSearchView {
       this.dishes = dishes;
       this.render();
     }).catch(error => {
-      console.log("Error", error);
+      console.error(error);
+      this.error = error;
+      this.isLoading = false;
+      this.render();
     });
   }
 
@@ -64,10 +68,17 @@ class DishSearchView {
     let newDishContainer = this.dishContainer.cloneNode(false);
     this.dishContainer.parentNode.replaceChild(newDishContainer, this.dishContainer);
     this.dishContainer = newDishContainer;
-
+    console.log(this.error);
     if(this.isLoading) {
       this.loading.removeAttribute('display');
-    } else {
+
+    } else if(this.error !== '') {
+      this.loading.setAttribute('display', 'none');
+      let error = document.createElement("p");
+      error.textContent = "Error: " + this.error;
+      this.dishContainer.appendChild(error);
+
+    } else{
       this.loading.setAttribute('display', 'none');
       
       if(this.dishes.length === 0) {
@@ -95,9 +106,13 @@ class DishSearchView {
     this.model.getAllDishes(type, filter).then(dishes => {
       this.dishes = dishes;
       this.isLoading = false;
+      this.error = "";
       this.render();
     }).catch(error => {
-      console.log("Error", error);
+      console.error(error);
+      this.error = error;
+      this.isLoading = false;
+      this.render();
     });
   }
 
