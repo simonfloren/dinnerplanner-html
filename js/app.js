@@ -102,6 +102,7 @@ window.onload = function() {
 	this.viewDish = id => {
 		selectedDish = id;
 		this.changeState("dish-details");
+		dishDetails.updateDish();
 	}
 
 	this.changeState();
