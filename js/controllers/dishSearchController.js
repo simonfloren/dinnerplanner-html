@@ -18,8 +18,6 @@ constructor(view, model, stateCtrl) {
     const filter = view.keyWords.value;
 
     stateCtrl.dishSearch(type, filter);
-    view.isLoading = true;
-    view.render();
   });
   }
 }

@@ -68,22 +68,27 @@ class DishSearchView {
     } else {
       this.loading.setAttribute('display', 'none');
       
-      // render each dish
-      this.dishes.forEach(cDish => {
-        const dishCard = new DishItemCardView(newDishContainer, cDish);
-        const dishCardController = new DishItemCardController(dishCard, this.model, this.stateCtrl);
-      });
+      if(this.dishes.length === 0) {
+        // no results
+
+      } else {
+        // render each dish
+        this.dishes.forEach(cDish => {
+          const dishCard = new DishItemCardView(newDishContainer, cDish);
+          const dishCardController = new DishItemCardController(dishCard, this.model, this.stateCtrl);
+        });
+      }
   
-      this.dishContainer.parentNode.replaceChild(newDishContainer, this.dishContainer);
-      this.dishContainer = newDishContainer;
     }
+    this.dishContainer.parentNode.replaceChild(newDishContainer, this.dishContainer);
+    this.dishContainer = newDishContainer;
   }
 
   updateDishes(type, filter) {
     this.isLoading = true;
     this.render();
 
-    model.getAllDishes(type, filter).then(dishes => {
+    this.model.getAllDishes(type, filter).then(dishes => {
       this.dishes = dishes;
       this.isLoading = false;
       this.render();
@@ -94,7 +99,7 @@ class DishSearchView {
 
   update(details) {
     if(details === 'dishes') {
-      this.renderDishes();
+      this.render();
     }
   }
 

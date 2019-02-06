@@ -10,8 +10,6 @@ window.onload = function() {
 	let currentScreen = "welcome";
 	let prevScreen = "";
 
-	let selectedDish = 0;
-
 	// Initialize all the views with the corresponding controllers
 	const headerView = new HeaderView(document.querySelector("#site-header"));
 	const heraderController = new HeaderController(headerView, this);
@@ -89,7 +87,7 @@ window.onload = function() {
 
 			case "dish-details":
 				sidebarView.showView();
-				dishDetails.showView(selectedDish);
+				dishDetails.showView();
 				break;
 
 			case "printout":
@@ -97,12 +95,16 @@ window.onload = function() {
 				printoutView.showView();
 				break;
 		}
-	};
+	}
 
 	this.viewDish = id => {
-		selectedDish = id;
+		dishDetails.updateDish(id);
 		this.changeState("dish-details");
 		dishDetails.updateDish();
+	}
+
+	this.dishSearch = (type, filter) => {
+		dishSearch.updateDishes(type, filter);
 	}
 
 	this.changeState();

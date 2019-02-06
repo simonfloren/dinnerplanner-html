@@ -153,22 +153,20 @@ class DinnerModel {
    */
 	getAllDishes(type, filter) {
 		const params = {
-			number: 10,
-			query: filter,
-			type 
+			number: 12,
+			ingredients: filter.split(' ').join(',')
 		};
 
 		console.log("[getAllDishes] Searching for dishes with query: ", params);
+		const url = baseURL + '/recipes/findByIngredients?' + this.serialize(params);
 
-		const url = baseURL + '/recipes/search' + serialize(params);
 		return fetch(url, {
 			headers: {
 				"X-Mashape-Key": API_KEY,
 				"Accept": "application/json"
 			}
 		})
-			.then(response => response.json())
-			.then(data => data.results);
+			.then(response => response.json());
 	}
 
 	getDishTypes() {
@@ -176,7 +174,7 @@ class DinnerModel {
 	}
 
 	getRandomDishes() {
-		const url = baseURL + "/recipes/random?number=" + 10;
+		const url = baseURL + "/recipes/random?number=" + 12;
 
 		return fetch(url, {
 			method: "GET",
@@ -194,7 +192,7 @@ class DinnerModel {
 	 */
 	serialize(params) {
 		var query = "";
-		for (key in params) {
+		for(let key in params) {
 			query += encodeURIComponent(key) + "=" + encodeURIComponent(params[key]) + "&";
 		}
 		return query;
