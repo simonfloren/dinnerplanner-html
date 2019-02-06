@@ -8,7 +8,7 @@
  */
  class DishItemCardView {
     constructor(container, dish) {
-      console.info("[dishItemCardView] Creating dish card: ", dish.name);
+      // console.info("[dishItemCardView] Creating dish card: ", dish.title);
 
       this.dish = dish;
 
@@ -18,8 +18,8 @@
         .querySelector('#dish-card')
         .cloneNode(true);
 
-      this.template.querySelector('#dish-img').src = "images/" + dish.image;
-      this.template.querySelector('#dish-name').textContent = dish.name;
+      this.template.querySelector('#dish-img').src = dish.image;
+      this.template.querySelector('#dish-name').textContent = dish.title;
 
       container.appendChild(this.template);
     }

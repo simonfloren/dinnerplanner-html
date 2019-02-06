@@ -16,7 +16,10 @@ constructor(view, model, stateCtrl) {
     e.preventDefault();
     const type = view.selectBox.value;
     const filter = view.keyWords.value;
-    view.render(type, filter);
+
+    stateCtrl.dishSearch(type, filter);
+    view.isLoading = true;
+    view.render();
   });
   }
 }

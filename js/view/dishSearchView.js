@@ -26,6 +26,7 @@ class DishSearchView {
     this.stateCtrl = stateCtrl;
 
     this.isLoading = true;
+    this.dishes = [];
 
     this.keyWords = container.querySelector('#keyWords');
     this.searchBtn = container.querySelector('#searchBtn');
@@ -46,32 +47,28 @@ class DishSearchView {
       this.selectBox.appendChild(option);
     });
 
+    this.render();
+
+    model.getRandomDishes().then(dishes => {
+      this.isLoading = false;
+      this.dishes = dishes;
+      this.render();
+    }).catch(error => {
+      console.log("Error", error);
+    });
   }
 
-  render(type, filter) {
+  render() {
+    // clear all dishes
+    let newDishContainer = this.dishContainer.cloneNode(false);
 
     if(this.isLoading) {
-
-    } else {
-      // clear all dishes
-      let newDishContainer = this.dishContainer.cloneNode(false);
-      let wantedTypes = [];
       
-      if(typeof type === 'undefined' || type === "all") {
-        wantedTypes = this.dishTypes;
-      } else {
-        wantedTypes.push(type);
-      }
-  
-      wantedTypes.forEach(cType => {
-        this.model.getAllDishes(cType.toLowerCase(), filter).then(dishes => {
-            dishes.forEach(dish => {
-            const dishCard = new DishItemCardView(newDishContainer, dish);
-            const dishCardController = new DishItemCardController(dishCard, this.model, this.stateCtrl);
-          });
-        }).catch(error => {
-          /* do something with the error */
-        });
+    } else {
+      // render each dish
+      this.dishes.forEach(cDish => {
+        const dishCard = new DishItemCardView(newDishContainer, cDish);
+        const dishCardController = new DishItemCardController(dishCard, this.model, this.stateCtrl);
       });
   
       this.dishContainer.parentNode.replaceChild(newDishContainer, this.dishContainer);
@@ -79,8 +76,23 @@ class DishSearchView {
     }
   }
 
-  update() {
+  updateDishes(type, filter) {
+    this.isLoading = true;
     this.render();
+
+    model.getAllDishes(type, filter).then(dishes => {
+      this.dishes = dishes;
+      this.isLoading = false;
+      this.render();
+    }).catch(error => {
+      console.log("Error", error);
+    });
+  }
+
+  update(details) {
+    if(details === 'dishes') {
+      this.renderDishes();
+    }
   }
 
   hideView() {
