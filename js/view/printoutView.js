@@ -22,7 +22,7 @@ class PrintoutView {
     menu.forEach(dish => {
       let row = this.template.cloneNode(true);
       row.querySelector('#dish-name').textContent = dish.title;
-      row.querySelector('#printout-description').textContent = dish.description;
+      row.querySelector('#printout-description').textContent = dish.instructions;
       row.querySelector('#po-img').src = dish.image;
       this.poBody.appendChild(row);
     });
