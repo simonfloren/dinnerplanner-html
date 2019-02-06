@@ -44,7 +44,7 @@ class DishDetails {
         let imgSrc = "";
         let dishName = "";
         let description = "";
-        model.getDish(id).then(dish => {
+        this.model.getDish(id).then(dish => {
             ing = dish.extendedIngredients;
             imgSrc = dish.image;
             dishName = dish.title;

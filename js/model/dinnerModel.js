@@ -102,11 +102,6 @@ class DinnerModel {
 		return price;
 	}
 
-	/** function that returns a dish of specific ID */
-	getDish(id) {
-		return getDishes([id]).then(dishes => dishes[0]);
-	}
-
 	/**
 	 * Returns an array of dishes and their info given their id's
 	 * @param {Array Num} ids 
@@ -124,6 +119,11 @@ class DinnerModel {
 		})
 			.then(resp => resp.json())
 			.then(data => data);
+	}
+
+	/** function that returns a dish of specific ID */
+	getDish(id) {
+		return this.getDishes([id]).then(dishes => dishes[0]);
 	}
 
 	/** Removes dish from menu */
