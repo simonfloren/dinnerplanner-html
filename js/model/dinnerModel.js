@@ -34,7 +34,7 @@ class DinnerModel {
 
 	removeObserver(observer) {
 		this._observers = this._observers.filter(obs => {
-			return obs !== observer; // != ?
+			return obs !== observer;
 		});
 	}
 
