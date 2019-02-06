@@ -23,6 +23,7 @@ class SidebarView {
 
     this.model = model;
     this.container = container;
+    this.menu = [];
 
     // Get dom elements
     this.table = document.querySelector('#selected-dishes');
@@ -72,9 +73,11 @@ class SidebarView {
     }
   }
 
-  update() {
-    console.info("[sidebarView] Update");
-    this.render();
+  update(details) {
+    if(details === 'menu') {
+      console.info("[sidebarView] Update");
+      this.render();
+    }
   }
 
   hideView() {
