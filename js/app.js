@@ -95,7 +95,7 @@ window.onload = function() {
 				printoutView.showView();
 				break;
 		}
-	};
+	}
 
 	this.viewDish = id => {
 		dishDetails.updateDish(id);
