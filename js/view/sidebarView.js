@@ -42,7 +42,6 @@ class SidebarView {
     console.info("[sidebarView] Render");
     const menu = this.model.getFullMenu();
     const guests = this.model.getNumberOfGuests();
-    console.debug(guests);
     
     // Remove previous list
     const newList = this.dishList.cloneNode(false);
