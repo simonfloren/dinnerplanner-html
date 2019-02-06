@@ -209,7 +209,8 @@ class DinnerModel {
 
 
 // All types of dishes
-let types = ["Starter", "Main dish", "Dessert"];
+let types = ["Main Course", "Side Dish", "Dessert", "Appetizer",
+"Salad", "Bread", "Breakfast", "Soup", "Beverage", "Sauce", "Drink"];
 
 // the dishes variable contains an array of all the dishes in the database.
 // each dish has id, name, type, image (name of the image file), description

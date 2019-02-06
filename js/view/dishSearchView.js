@@ -94,9 +94,7 @@ class DishSearchView {
         });
         this.dishContainer.parentNode.replaceChild(newDishContainer, this.dishContainer);
       }
-  
-    }
-    
+    } 
   }
 
   updateDishes(type, filter) {
@@ -116,7 +114,7 @@ class DishSearchView {
     });
   }
 
-  update(details) {
+  update(model, details) {
     if(details === 'dishes') {
       this.render();
     }
