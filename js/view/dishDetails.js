@@ -37,23 +37,37 @@ class DishDetails {
         console.log("[dishDetails] Rendering dish:", id);
         // Get data
         let totGuests = this.model.getNumberOfGuests();
-        let dish = this.model.getDish(id);
-        let totPrice = this.model.getDishPrice(dish) * totGuests;
+
+        //let totPrice = this.model.getDishPrice(dish) * totGuests;
+        let ing = [];
+        let totPrice = 0;
+        let imgSrc = "";
+        let dishName = "";
+        let description = "";
+        model.getDish(id).then(dish => {
+            ing = dish.extendedIngredients;
+            imgSrc = dish.image;
+            dishName = dish.title;
+            description = dish.instructions;
+            totPrice = dish.pricePerServing * totGuests;
+        }).catch(error => {
+            /* do something with the error */
+        })
 
         // Render details
-        this.image.src = "images/" + dish.image; // Send in data here, method to do so not implemented yet    
-        this.name.textContent = dish.name; // Send in data here, method to do so not implemented yet  
-        this.description.textContent = dish.description; // Send in data here, method to do so not implemented yet
+        this.image.src = imgSrc;
+        this.name.textContent = dishName;
+        this.description.textContent = description;
         this.addBtn.value = id;
 
         // Render ingredients card
         this.guests.textContent = totGuests;
-        let ing = dish.ingredients;
         ing.forEach(ingredient => {
             let clone = this.template.cloneNode(true);
-            clone.querySelector('#ingredient-unit').textContent = (ingredient.quantity * totGuests) + ' ' + ingredient.unit;
+            clone.querySelector('#ingredient-unit').textContent = (ingredient.amount * totGuests) + ' ' + ingredient.unit;
             clone.querySelector('#ingredient-name').textContent = ingredient.name;
-            clone.querySelector('#ingredient-price').textContent  = ingredient.price * totGuests;
+            //clone.querySelector('#ingredient-price').textContent  = ingredient.price * totGuests;
+            clone.querySelector('#ingredient-price').textContent  = "?";
             newTable.appendChild(clone);
         });
         this.price.textContent = totPrice;
