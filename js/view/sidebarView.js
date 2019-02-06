@@ -52,10 +52,11 @@ class SidebarView {
 
     let totPrice = 0;
     menu.forEach(dish => {
+      console.log("dish", dish);
       let dishDiv = template.cloneNode(true);;
       totPrice += dish.pricePerServing * guests;
 
-      dishDiv.querySelector('#dish-name').textContent = dish.name;
+      dishDiv.querySelector('#dish-name').textContent = dish.title;
       dishDiv.querySelector('#dish-price').textContent = "SEK " + (dish.pricePerServing * guests);
       this.dishList.append(dishDiv);
     });
