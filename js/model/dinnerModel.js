@@ -66,7 +66,6 @@ class DinnerModel {
 
 	/** Returns all the dishes on the menu. */
 	getFullMenu() {
-		//TODO Lab 1
 		return menu;
 	}
 

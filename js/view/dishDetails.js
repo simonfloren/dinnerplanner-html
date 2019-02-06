@@ -13,6 +13,7 @@ class DishDetails {
 
         this.isLoading = true;
         this.dish = {};
+        this.error;
 
         //get dom elements
         this.loading = document.querySelector("#dishDetailsLoading");
@@ -45,6 +46,10 @@ class DishDetails {
         if(this.isLoading) {
             this.loading.removeAttribute('display');
             this.container.setAttribute('display', 'none');
+        } else if(this.error !== '') {
+            this.container.setAttribute('display', 'none');
+            this.loading.setAttribute('display', 'none');
+            alert(this.error);
         } else {
             this.loading.setAttribute('display', 'none');
             this.container.removeAttribute('display');
@@ -84,9 +89,12 @@ class DishDetails {
         this.model.getDish(id).then(dish => {
             this.dish = dish;
             this.isLoading = false;
+            this.error = "";
             this.render();
         }).catch(error => {
-            /* do something with the error */
+            this.error = error;
+            this.isLoading = false;
+            this.render();
         });
     }
 

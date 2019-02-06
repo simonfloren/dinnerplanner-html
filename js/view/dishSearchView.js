@@ -75,9 +75,8 @@ class DishSearchView {
     } else if(this.error !== '') {
       this.loading.setAttribute('display', 'none');
       let error = document.createElement("p");
-      error.textContent = "Error: " + this.error;
+      error.textContent = this.error;
       this.dishContainer.appendChild(error);
-
     } else{
       this.loading.setAttribute('display', 'none');
       

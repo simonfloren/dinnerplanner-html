@@ -27,16 +27,19 @@ class MenuOverviewView {
     this.overViewBodyContainer.parentNode.replaceChild(newOverView, this.overViewBodyContainer);
     this.overViewBodyContainer = newOverView;
 
+    let totPrice = 0;
+
     this.model.getFullMenu().forEach(data => {
       console.log("data", data);
       let dish = new DishItemCardView(this.overViewBodyContainer, data);
       let priceTag = this.template.cloneNode(true);
-      priceTag.querySelector('#price').textContent = this.model.getDishPrice(data) * this.model.getNumberOfGuests();
+      const price = data.pricePerServing * this.model.getNumberOfGuests();
+      totPrice += price;
+      priceTag.querySelector('#price').textContent = price;
       dish.template.appendChild(priceTag);
     });
 
     // populate price field
-    let totPrice = this.model.getTotalMenuPrice();
     this.priceContainer.textContent = totPrice;
   }
 
