@@ -4,7 +4,7 @@
  *  - displays food based on search criterias
  *  - updates the model if something was chosen
  * 
- * Autho: Albin Winkelmann
+ * Author: Albin Winkelmann
  * 
  * @param {Node} container - references the HTML parent element that contains the view.
  * @param {Object} model - the reference to the Dinner Model
@@ -64,9 +64,13 @@ class DishSearchView {
       }
   
       wantedTypes.forEach(cType => {
-        this.model.getAllDishes(cType.toLowerCase(), filter).forEach(dish => {
-          const dishCard = new DishItemCardView(newDishContainer, dish, this.model);
-          const dishCardController = new DishItemCardController(dishCard, this.model, this.stateCtrl);
+        this.model.getAllDishes(cType.toLowerCase(), filter).then(dishes => {
+            dishes.forEach(dish => {
+            const dishCard = new DishItemCardView(newDishContainer, dish);
+            const dishCardController = new DishItemCardController(dishCard, this.model, this.stateCtrl);
+          });
+        }).catch(error => {
+          /* do something with the error */
         });
       });
   
