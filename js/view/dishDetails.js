@@ -66,7 +66,7 @@ class DishDetails {
                 clone.querySelector('#ingredient-unit').textContent = (ingredient.amount * totGuests) + ' ' + ingredient.unit;
                 clone.querySelector('#ingredient-name').textContent = ingredient.name;
                 //clone.querySelector('#ingredient-price').textContent  = ingredient.price * totGuests;
-                clone.querySelector('#ingredient-price').textContent  = "?";
+                //clone.querySelector('#ingredient-price').textContent  = "?";
                 newTable.appendChild(clone);
             });
             this.price.textContent = totPrice;
@@ -75,12 +75,6 @@ class DishDetails {
             this.table.parentNode.replaceChild(newTable, this.table);
             this.table = newTable;
         }
-    }
-
-    updateGuests() {
-        let guests = this.model.getNumberOfGuests();
-        this.price.textContent = guests * this.dish.pricePerServing;
-        //this.table.querySelector()
     }
 
     updateDish(id) {
@@ -96,10 +90,10 @@ class DishDetails {
         });
     }
 
-    update(details) {
+    update(model, details) {
         if(details === "guests") {
             console.info("[dishDetails] Update");
-            this.updateGuests();
+            this.render();
         }
         //this.render(this.currentDish);
     }
