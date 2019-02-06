@@ -79,6 +79,8 @@ class DishDetails {
 
     updateGuests() {
         let guests = this.model.getNumberOfGuests();
+        this.price.textContent = guests * this.dish.pricePerServing;
+        //this.table.querySelector()
     }
 
     updateDish(id) {
