@@ -137,10 +137,16 @@ class DinnerModel {
    * it is removed from the menu and the new one added. */
 	addDishToMenu(id) {
 		console.log("[dinnerModel] Added to menu, id:", id);
-		let newDish = this.getDish(id);
-		menu.push(newDish);
-
-		this.notifyObservers();
+		
+		if(menu.some(menuItem => menuItem.id == id)) {
+			console.log("Dish already in menu");
+			return;
+		}
+		
+		this.getDish(id).then(dish => {
+			menu.push(dish);
+			this.notifyObservers('menu');
+		});
 	}
 
   /** function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
