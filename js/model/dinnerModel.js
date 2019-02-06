@@ -154,11 +154,15 @@ class DinnerModel {
 	getAllDishes(type, filter) {
 		const params = {
 			number: 12,
-			ingredients: filter.split(' ').join(',')
+			includeIngredients: filter.split(' ').join(',')
 		};
 
+		if(type !== 'all') {
+			params['type'] = type;
+		}
+
 		console.log("[getAllDishes] Searching for dishes with query: ", params);
-		const url = baseURL + '/recipes/findByIngredients?' + this.serialize(params);
+		const url = baseURL + '/recipes/searchComplex?' + this.serialize(params);
 
 		return fetch(url, {
 			headers: {
@@ -166,7 +170,8 @@ class DinnerModel {
 				"Accept": "application/json"
 			}
 		})
-			.then(response => response.json());
+			.then(response => response.json())
+			.then(data => data.results);
 	}
 
 	getDishTypes() {

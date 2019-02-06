@@ -62,6 +62,8 @@ class DishSearchView {
   render() {
     // clear all dishes
     let newDishContainer = this.dishContainer.cloneNode(false);
+    this.dishContainer.parentNode.replaceChild(newDishContainer, this.dishContainer);
+    this.dishContainer = newDishContainer;
 
     if(this.isLoading) {
       this.loading.removeAttribute('display');
@@ -70,18 +72,20 @@ class DishSearchView {
       
       if(this.dishes.length === 0) {
         // no results
-
+        let noresults = document.createElement("p");
+        noresults.textContent = "No results";
+        this.dishContainer.appendChild(noresults);
       } else {
         // render each dish
         this.dishes.forEach(cDish => {
           const dishCard = new DishItemCardView(newDishContainer, cDish);
           const dishCardController = new DishItemCardController(dishCard, this.model, this.stateCtrl);
         });
+        this.dishContainer.parentNode.replaceChild(newDishContainer, this.dishContainer);
       }
   
     }
-    this.dishContainer.parentNode.replaceChild(newDishContainer, this.dishContainer);
-    this.dishContainer = newDishContainer;
+    
   }
 
   updateDishes(type, filter) {
